@@ -22,7 +22,7 @@ namespace cookiejar
 		{
 			Point<T> distance = this->center - other.center;
 			Point<T> overlap{ this->halfwidth + other.halfwidth, this->halfheight + other.halfheight };
-			return (std::abs(distance.x) < overlap.x && std::abs(distance.y) < overlap.y);
+			return (std::abs(distance.x) <= overlap.x && std::abs(distance.y) <= overlap.y);
 		}
 	};
 

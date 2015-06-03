@@ -55,9 +55,52 @@ namespace cookiejar
 			this->remove_point(element, get_qtree_vector<T>(element));
 		}
 
-		std::vector<T*> query_area(BoundingBox &area); // TODO Implement
+		inline std::vector<T> list()
+		{
+			this->query_area(this->boundary);
+		}
 
-	public: // DEBUG
+		inline std::vector<T> query_area(BoundingBox &area)
+		{
+			std::vector<T> result;
+
+			if (!this->boundary.intersects(area))
+			{
+				return result;
+			}
+
+			for (auto element : this->elements)
+			{
+				if (area.contains(get_qtree_vector(element)))
+				{
+					result.push_back(element);
+				}
+			}
+
+			if (!this->branches[0])
+			{
+				return result;
+			}
+
+			std::size_t t_size = result.size();
+			std::vector<T> c_lists[4] = {};
+
+			for (std::size_t i = 0; i < 4; ++i)
+			{
+				c_lists[i] = this->branches[i]->query_area(area);
+				t_size += c_lists[i].size();
+			}
+
+			result.reserve(t_size);
+			for (std::size_t i = 0; i < 4; ++i)
+			{
+				result.insert(result.end(), c_lists[i].begin(), c_lists[i].end());
+			}
+
+			return result;
+		}
+
+	private:
 		bool insert_point(const T &element, const Vector2 &point)
 		{
 			if (!this->boundary.contains(point))
@@ -122,7 +165,7 @@ namespace cookiejar
 			this->branches[3] = new QTree<T>(br, this);
 		}
 
-	public: // DEBUG
+	private:
 		BoundingBox boundary;
 		std::vector<T> elements;
 		QTree<T> *parent;
