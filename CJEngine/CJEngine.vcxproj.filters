@@ -16,6 +16,12 @@
     <Filter Include="Header Files\Foundation">
       <UniqueIdentifier>{7ce3c9d4-ead5-4e95-9ef0-8d118d5db02f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Component Model">
+      <UniqueIdentifier>{26ce3b32-87fe-424d-852e-ef1d7b8e7a3f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Component Model">
+      <UniqueIdentifier>{85948575-5b17-40bf-9f2c-596b1dbd2ecb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -34,6 +40,9 @@
     </ClInclude>
     <ClInclude Include="foundation\vector.h">
       <Filter>Header Files\Foundation</Filter>
+    </ClInclude>
+    <ClInclude Include="entity.h">
+      <Filter>Header Files\Component Model</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
