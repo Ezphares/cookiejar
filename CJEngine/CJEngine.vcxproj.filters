@@ -13,7 +13,7 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Header Files\foundation">
+    <Filter Include="Header Files\Foundation">
       <UniqueIdentifier>{7ce3c9d4-ead5-4e95-9ef0-8d118d5db02f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -27,13 +27,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="foundation\boundingbox.h">
-      <Filter>Header Files\foundation</Filter>
+      <Filter>Header Files\Foundation</Filter>
     </ClInclude>
     <ClInclude Include="foundation\quadtree.h">
-      <Filter>Header Files\foundation</Filter>
+      <Filter>Header Files\Foundation</Filter>
     </ClInclude>
     <ClInclude Include="foundation\vector.h">
-      <Filter>Header Files\foundation</Filter>
+      <Filter>Header Files\Foundation</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -60,7 +60,7 @@ namespace cookiejar
 			this->query_area(this->boundary);
 		}
 
-		inline std::vector<T> query_area(BoundingBox &area)
+		std::vector<T> query_area(BoundingBox &area)
 		{
 			std::vector<T> result;
 

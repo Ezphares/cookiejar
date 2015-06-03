@@ -41,7 +41,7 @@
     <NMakePreprocessorDefinitions>WIN32;_DEBUG;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
     <NMakeReBuildCommandLine>mingw32-make rebuild all</NMakeReBuildCommandLine>
     <NMakeCleanCommandLine>mingw32-make clean</NMakeCleanCommandLine>
-    <NMakeIncludeSearchPath>E:\cpp\include</NMakeIncludeSearchPath>
+    <NMakeIncludeSearchPath>E:\cpp\include;$(ProjectDir)</NMakeIncludeSearchPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <NMakeBuildCommandLine>mingw32-make</NMakeBuildCommandLine>
@@ -49,7 +49,7 @@
     <NMakePreprocessorDefinitions>WIN32;NDEBUG;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
     <NMakeReBuildCommandLine>mingw32-make rebuild all</NMakeReBuildCommandLine>
     <NMakeCleanCommandLine>mingw32-make clean</NMakeCleanCommandLine>
-    <NMakeIncludeSearchPath>E:\cpp\include</NMakeIncludeSearchPath>
+    <NMakeIncludeSearchPath>E:\cpp\include;$(ProjectDir)</NMakeIncludeSearchPath>
   </PropertyGroup>
   <ItemDefinitionGroup>
   </ItemDefinitionGroup>
