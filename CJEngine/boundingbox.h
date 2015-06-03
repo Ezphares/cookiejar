@@ -14,15 +14,15 @@ namespace cookiejar
 
 		inline bool contains(const Point<T> &point) const
 		{
-			Point<T> offset = point - this->center;
-			return (std::abs(offset.x) <= this->halfwidth && std::abs(offset.y) <= this->halfheight);
+			return (point.x >= this->center.x - halfwidth && point.x < this.center.x + halfwidth &&
+				    point.y >= this->center.y - halfheight && point.y < this.center.y + halfheight)
 		}
 
 		inline bool intersects(const AABB<T> &other) const
 		{
 			Point<T> distance = this->center - other.center;
 			Point<T> overlap{ this->halfwidth + other.halfwidth, this->halfheight + other.halfheight };
-			return (std::abs(distance.x) <= overlap.x && std::abs(distance.y) <= overlap.y);
+			return (std::abs(distance.x) < overlap.x && std::abs(distance.y) < overlap.y);
 		}
 	};
 
