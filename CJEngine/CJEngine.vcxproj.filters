@@ -26,13 +26,13 @@
     <None Include="Makefile" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="vector.h">
+    <ClInclude Include="foundation\boundingbox.h">
       <Filter>Header Files\foundation</Filter>
     </ClInclude>
-    <ClInclude Include="quadtree.h">
+    <ClInclude Include="foundation\quadtree.h">
       <Filter>Header Files\foundation</Filter>
     </ClInclude>
-    <ClInclude Include="boundingbox.h">
+    <ClInclude Include="foundation\vector.h">
       <Filter>Header Files\foundation</Filter>
     </ClInclude>
   </ItemGroup>

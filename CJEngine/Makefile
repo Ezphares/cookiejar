@@ -1,5 +1,5 @@
 CC=g++
-CCFLAGS=-g -Wall -std=c++11
+CCFLAGS=-g -Wall -std=c++11 -I.
 #TODO: -lmingw32 if problems arise
 LDSTD=-lgcc
 LDIMAGE=-lpng -lz

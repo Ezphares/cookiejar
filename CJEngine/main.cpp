@@ -1,9 +1,8 @@
 #include <iostream>
 
-#include "quadtree.h"
+#include "foundation/quadtree.h"
 
 using namespace cookiejar;
-
 
 int main(int argc, char *argv[])
 {

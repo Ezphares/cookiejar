@@ -63,9 +63,9 @@
     <None Include="Makefile" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="boundingbox.h" />
-    <ClInclude Include="quadtree.h" />
-    <ClInclude Include="vector.h" />
+    <ClInclude Include="foundation\boundingbox.h" />
+    <ClInclude Include="foundation\quadtree.h" />
+    <ClInclude Include="foundation\vector.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
