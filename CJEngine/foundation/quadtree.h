@@ -1,11 +1,10 @@
 #pragma once
 
+#include "boundingbox.h"
+
 #include <type_traits>
 #include <cstdint>
 #include <vector>
-
-#include <foundation/boundingbox.h>
-
 
 namespace cookiejar
 {

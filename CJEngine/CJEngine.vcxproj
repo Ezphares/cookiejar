@@ -57,13 +57,16 @@
     <Text Include="README.md" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="componentmodel\entitymanager.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Makefile" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="entity.h" />
+    <ClInclude Include="componentmodel\componentinterface.h" />
+    <ClInclude Include="componentmodel\entity.h" />
+    <ClInclude Include="componentmodel\entitymanager.h" />
     <ClInclude Include="foundation\boundingbox.h" />
     <ClInclude Include="foundation\quadtree.h" />
     <ClInclude Include="foundation\vector.h" />

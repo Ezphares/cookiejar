@@ -1,8 +1,8 @@
 #pragma once
 
-#include <cmath>
+#include "vector.h"
 
-#include <foundation/vector.h>
+#include <cmath>
 
 namespace cookiejar
 {

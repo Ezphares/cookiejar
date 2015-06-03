@@ -27,6 +27,9 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="componentmodel\entitymanager.cpp">
+      <Filter>Source Files\Component Model</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Makefile" />
@@ -41,7 +44,13 @@
     <ClInclude Include="foundation\vector.h">
       <Filter>Header Files\Foundation</Filter>
     </ClInclude>
-    <ClInclude Include="entity.h">
+    <ClInclude Include="componentmodel\componentinterface.h">
+      <Filter>Header Files\Component Model</Filter>
+    </ClInclude>
+    <ClInclude Include="componentmodel\entitymanager.h">
+      <Filter>Header Files\Component Model</Filter>
+    </ClInclude>
+    <ClInclude Include="componentmodel\entity.h">
       <Filter>Header Files\Component Model</Filter>
     </ClInclude>
   </ItemGroup>
