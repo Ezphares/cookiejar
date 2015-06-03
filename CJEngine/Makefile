@@ -1,5 +1,5 @@
 CC=g++
-CCFLAGS=-g -Wall -std=c++11 -I.
+CCFLAGS=-g -Wall -Werror -std=c++11 -I.
 #TODO: -lmingw32 if problems arise
 LDSTD=-lgcc
 LDIMAGE=-lpng -lz
@@ -23,3 +23,4 @@ rebuild: clean
 
 clean:
 	del $(OBJ) $(EXE)
+
