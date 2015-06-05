@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include "foundation/quadtree.h"
+#include "componentmodel\translationcomponent.h"
 
 using namespace cookiejar;
 

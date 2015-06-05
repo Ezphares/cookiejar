@@ -30,6 +30,12 @@
     <ClCompile Include="componentmodel\entitymanager.cpp">
       <Filter>Source Files\Component Model</Filter>
     </ClCompile>
+    <ClCompile Include="componentmodel\componentmanager.cpp">
+      <Filter>Source Files\Component Model</Filter>
+    </ClCompile>
+    <ClCompile Include="componentmodel\entityinterface.cpp">
+      <Filter>Source Files\Component Model</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Makefile" />
@@ -47,10 +53,22 @@
     <ClInclude Include="componentmodel\componentinterface.h">
       <Filter>Header Files\Component Model</Filter>
     </ClInclude>
-    <ClInclude Include="componentmodel\entitymanager.h">
+    <ClInclude Include="componentmodel\entity.h">
       <Filter>Header Files\Component Model</Filter>
     </ClInclude>
-    <ClInclude Include="componentmodel\entity.h">
+    <ClInclude Include="componentmodel\entityinterface.h">
+      <Filter>Header Files\Component Model</Filter>
+    </ClInclude>
+    <ClInclude Include="componentmodel\component.h">
+      <Filter>Header Files\Component Model</Filter>
+    </ClInclude>
+    <ClInclude Include="componentmodel\componentmanager.h">
+      <Filter>Header Files\Component Model</Filter>
+    </ClInclude>
+    <ClInclude Include="componentmodel\translationcomponent.h">
+      <Filter>Header Files\Component Model</Filter>
+    </ClInclude>
+    <ClInclude Include="componentmodel\entitymanager.h">
       <Filter>Header Files\Component Model</Filter>
     </ClInclude>
   </ItemGroup>

@@ -142,7 +142,7 @@ namespace cookiejar
 				Vector2 point = get_qtree_vector(*it);
 				if (this->insert_point(*it, point))
 				{
-					result.erase(it);
+					it = result.erase(it);
 					continue;
 				}
 				++it;
@@ -152,14 +152,14 @@ namespace cookiejar
 			auto jt = this->elements.begin();
 			while (jt != this->elements.end())
 			{
-				Vector2 point = get_qtree_vector(*it);
+				Vector2 point = get_qtree_vector(*jt);
 				if (!this->boundary.contains(point))
 				{
-					result.push_back(*it);
-					this->elements.erase(it);
+					result.push_back(*jt);
+					jt = this->elements.erase(jt);
 					continue;
 				}
-				++it;
+				++jt;
 			}
 			return result;
 		}

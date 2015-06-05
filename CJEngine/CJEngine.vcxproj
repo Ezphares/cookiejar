@@ -57,19 +57,25 @@
     <Text Include="README.md" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="componentmodel\componentmanager.cpp" />
     <ClCompile Include="componentmodel\entitymanager.cpp" />
+    <ClCompile Include="componentmodel\entityinterface.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Makefile" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="componentmodel\component.h" />
+    <ClInclude Include="componentmodel\componentmanager.h" />
     <ClInclude Include="componentmodel\componentinterface.h" />
     <ClInclude Include="componentmodel\entity.h" />
     <ClInclude Include="componentmodel\entitymanager.h" />
+    <ClInclude Include="componentmodel\entityinterface.h" />
     <ClInclude Include="foundation\boundingbox.h" />
     <ClInclude Include="foundation\quadtree.h" />
     <ClInclude Include="foundation\vector.h" />
+    <ClInclude Include="componentmodel\translationcomponent.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
