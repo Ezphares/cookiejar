@@ -2,11 +2,10 @@
 
 #include "translationcomponent.h"
 
+#include <algorithm>
+
 namespace cookiejar
 {
-	ComponentManager *ComponentManager::ACTIVE = NULL;
-
-
 	ComponentManager::ComponentManager()
 	{
 	}
@@ -18,16 +17,22 @@ namespace cookiejar
 
 	std::vector<Translation> &ComponentManager::get_translations()
 	{
-		return this->translations;
+		return _translations;
 	}
 
-	void ComponentManager::activate()
+	void ComponentManager::attach(const Entity &entity, Component *component)
 	{
-		ComponentManager::ACTIVE = this;
+		_generic_components[entity].push_back(component);
 	}
 
-	ComponentManager *ComponentManager::active()
+	void ComponentManager::detach(const Entity &entity, Component *component)
 	{
-		return ComponentManager::ACTIVE;
+		auto &list = _generic_components[entity];
+
+		auto it = std::find(list.begin(), list.end(), component);
+		if (it != list.end())
+		{
+			list.erase(it);
+		}
 	}
 }

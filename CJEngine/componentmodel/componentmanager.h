@@ -4,6 +4,8 @@
 #include "component.h"
 #include "entityinterface.h"
 
+#include <foundation\activatable.h>
+
 #include <vector>
 #include <map>
 
@@ -11,7 +13,7 @@ namespace cookiejar
 {
 	class Translation;
 
-	class ComponentManager
+	class ComponentManager : public Activatable<ComponentManager>
 	{
 	private:
 		ComponentManager();
@@ -20,7 +22,7 @@ namespace cookiejar
 		~ComponentManager();
 
 		template <typename T>
-		Component *get_component(const Entity &entity)
+		inline std::vector<Component *> get_components(const Entity &entity)
 		{
 			/*if (!EntityManager::is_alive())
 			{
@@ -29,15 +31,13 @@ namespace cookiejar
 			return NULL;
 		}
 
+
+		void attach(const Entity &entity, Component *component);
+		void detach(const Entity &entity, Component *component);
 		std::vector<Translation> &get_translations();
 
-	public:
-		void activate();
-		static ComponentManager *active();
-
 	private:
-		std::vector<Translation> translations;
-		std::map<Entity, std::vector<Component>> generic_components;
-		static ComponentManager *ACTIVE;
+		std::vector<Translation> _translations;
+		std::map<Entity, std::vector<Component *>> _generic_components;
 	};
 }

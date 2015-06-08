@@ -77,8 +77,9 @@
     <ClInclude Include="foundation\quadtree.h" />
     <ClInclude Include="foundation\vector.h" />
     <ClInclude Include="componentmodel\translationcomponent.h" />
-    <ClInclude Include="collidercomponent.h" />
+    <ClInclude Include="physics\collidercomponent.h" />
     <ClInclude Include="physics\physicsmanager.h" />
+    <ClInclude Include="foundation\activatable.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

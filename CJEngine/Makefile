@@ -8,8 +8,8 @@ LDFLAGS=$(LDSTD) $(LDIMAGE) $(LDOGL)
 RM=del
 
 SRC=main.cpp \
-componentmodel\\entitymanager.cpp componentmodel\\componentmanager.cpp componentmodel\\entityinterface.cpp
-
+componentmodel\\entitymanager.cpp componentmodel\\componentmanager.cpp componentmodel\\entityinterface.cpp \
+physics\\physicsmanager.cpp
 
 
 OBJ=$(SRC:.cpp=.o)

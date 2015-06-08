@@ -13,8 +13,9 @@ namespace cookiejar
 
 	Entity entity_create(const Vector2 &translation)
 	{
+		Translation trans = Translation(translation);
 		Entity e = ACTIVE->create_entity();
-		component_attach(e, Translation(translation));
+		component_attach(e, &trans);
 		return e;
 	}
 }

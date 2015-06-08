@@ -1,9 +1,12 @@
 #pragma once
 
 #include <componentmodel\componentinterface.h>
+#include <componentmodel\translationcomponent.h>
+#include <foundation\quadtree.h>
 
 #include <foundation\boundingbox.h>
 #include <foundation\vector.h>
+#include "physicsmanager.h"
 
 namespace cookiejar
 {
@@ -32,24 +35,31 @@ namespace cookiejar
 		Platform platform;
 	};
 
+	template <>
+	inline Vector2 get_qtree_vector<Collider *>(Collider * const &collider)
+	{
+		const Entity &e = collider->get_entity();
+		Translation *trans = component_get<Translation>(e);
+		return Vector2{ collider->offset.x + trans->pos.x, collider->offset.y + trans->pos.y };
+	}
 
 
 	template <>
 	inline Collider *component_get<Collider>(const Entity &entity)
 	{
-		return NULL;// TODO
+		return PhysicsManager::active()->get_by_entity(entity);
 	}
 
 	template <>
-	inline void component_attach<Collider>(const Entity &entity, const Collider &translation)
+	inline void component_attach_internal<Collider>(const Entity &entity, Collider *collider)
 	{
-		// TODO
+		PhysicsManager::active()->attach(entity, collider);
 	}
 
 	template <>
-	inline void component_detach<Collider>(const Entity &entity, const Collider &translation)
+	inline void component_detach<Collider>(const Entity &entity, Collider *collider)
 	{
-		// TODO
+		PhysicsManager::active()->detach(entity, collider);
 	}
 
 }

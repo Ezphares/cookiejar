@@ -2,6 +2,8 @@
 
 #include "entity.h"
 
+#include <foundation\activatable.h>
+
 #include <vector>
 #include <queue>
 
@@ -10,7 +12,7 @@ namespace cookiejar
 	const uint32_t ENTITY_INDEX_REUSE_DELAY = 1024;
 
 
-	class EntityManager
+	class EntityManager : public Activatable<EntityManager>
 	{
 	public:
 		EntityManager();

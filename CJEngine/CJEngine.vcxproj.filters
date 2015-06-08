@@ -83,8 +83,11 @@
     <ClInclude Include="physics\physicsmanager.h">
       <Filter>Header Files\Physics</Filter>
     </ClInclude>
-    <ClInclude Include="collidercomponent.h">
+    <ClInclude Include="physics\collidercomponent.h">
       <Filter>Header Files\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="foundation\activatable.h">
+      <Filter>Header Files\Foundation</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

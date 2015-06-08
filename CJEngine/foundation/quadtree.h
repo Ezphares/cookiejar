@@ -35,7 +35,7 @@ namespace cookiejar
 		typedef std::integral_constant<std::uint16_t, 4> CAPACITY;
 
 	public:
-		inline QTree(BoundingBox &boundary) :
+		inline QTree(const BoundingBox &boundary) :
 			_boundary(boundary),
 			_elements(),
 			_branches()
