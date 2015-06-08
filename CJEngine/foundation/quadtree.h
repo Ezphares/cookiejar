@@ -36,16 +36,16 @@ namespace cookiejar
 
 	public:
 		inline QTree(BoundingBox &boundary) :
-			boundary(boundary),
-			elements(),
-			branches()
+			_boundary(boundary),
+			_elements(),
+			_branches()
 		{};
 
 		inline virtual ~QTree()
 		{
 			for (std::size_t i = 0; i < 4; ++i)
 			{
-				delete this->branches[i];
+				delete _branches[i];
 			}
 		}
 
@@ -68,12 +68,12 @@ namespace cookiejar
 		{
 			std::vector<T> result;
 
-			if (!this->boundary.intersects(area))
+			if (!_boundary.intersects(area))
 			{
 				return result;
 			}
 
-			for (auto element : this->elements)
+			for (auto element : _elements)
 			{
 				if (area.contains(get_qtree_vector(element)))
 				{
@@ -81,7 +81,7 @@ namespace cookiejar
 				}
 			}
 
-			if (!this->branches[0])
+			if (!_branches[0])
 			{
 				return result;
 			}
@@ -91,7 +91,7 @@ namespace cookiejar
 
 			for (std::size_t i = 0; i < 4; ++i)
 			{
-				c_lists[i] = this->branches[i]->query_area(area);
+				c_lists[i] = _branches[i]->query_area(area);
 				t_size += c_lists[i].size();
 			}
 
@@ -114,13 +114,13 @@ namespace cookiejar
 
 			// Recursively create a list of returned elements from children
 			std::size_t t_size = QTree<T>::CAPACITY::value;
-			if (this->branches[0])
+			if (_branches[0])
 			{
 				std::vector<T> c_lists[4] = {};
 
 				for (std::size_t i = 0; i < 4; ++i)
 				{
-					c_lists[i] = this->branches[i]->update();
+					c_lists[i] = _branches[i]->update();
 					t_size += c_lists[i].size();
 				}
 
@@ -140,7 +140,7 @@ namespace cookiejar
 			while (it != result.end())
 			{
 				Vector2 point = get_qtree_vector(*it);
-				if (this->insert_point(*it, point))
+				if (insert_point(*it, point))
 				{
 					it = result.erase(it);
 					continue;
@@ -149,14 +149,14 @@ namespace cookiejar
 			}
 
 			// Add own children if necessary
-			auto jt = this->elements.begin();
-			while (jt != this->elements.end())
+			auto jt = _elements.begin();
+			while (jt != _elements.end())
 			{
 				Vector2 point = get_qtree_vector(*jt);
-				if (!this->boundary.contains(point))
+				if (!_boundary.contains(point))
 				{
 					result.push_back(*jt);
-					jt = this->elements.erase(jt);
+					jt = _elements.erase(jt);
 					continue;
 				}
 				++jt;
@@ -168,19 +168,19 @@ namespace cookiejar
 		bool insert_point(const T &element, const Vector2 &point)
 		{
 			// Does the obejct fit in this node?
-			if (!this->boundary.contains(point))
+			if (!_boundary.contains(point))
 			{
 				return false;
 			}
 
 			// Is there space in this node?
-			if (this->elements.size() < QTree<T>::CAPACITY::value)
+			if (_elements.size() < QTree<T>::CAPACITY::value)
 			{
-				this->elements.push_back(element);
+				_elements.push_back(element);
 			}
 
 			// Do we need to subdivide?
-			if (!this->branches[0])
+			if (!_branches[0])
 			{
 				this->subdivide();
 			}
@@ -188,7 +188,7 @@ namespace cookiejar
 			// Attempt insertion in branches!
 			for (std::size_t i = 0; i < 4; ++i)
 			{
-				if (this->branches[i]->insert_point(element, point)) return true;
+				if (_branches[i]->insert_point(element, point)) return true;
 			}
 
 			// If this happens, something has gone horribly wrong
@@ -197,48 +197,48 @@ namespace cookiejar
 
 		void remove_point(const T &element, const Vector2 &point)
 		{
-			if (!this->boundary.contains(point))
+			if (!_boundary.contains(point))
 			{
 				return;
 			}
 
-			for (auto it = this->elements.begin(); it < this->elements.end(); ++it)
+			for (auto it = _elements.begin(); it < _elements.end(); ++it)
 			{
 				if (*it == element)
 				{
-					this->elements.erase(it);
+					_elements.erase(it);
 					return;
 				}
 			}
 
 			for (std::size_t i = 0; i < 4; ++i)
 			{
-				this->branches[i]->remove_point(element, point);
+				_branches[i]->remove_point(element, point);
 			}
 		}
 		
 		void subdivide()
 		{
-			float w = this->boundary.halfwidth / 2,
-				  h = this->boundary.halfheight / 2;
+			float w = _boundary.halfwidth / 2,
+				  h = _boundary.halfheight / 2;
 
 			// Create subdivision boxes
 			BoundingBox
-				tl{ (this->boundary.center - Vector2{ w, h }), w, h },
-				tr = tl + Vector2{ this->boundary.halfwidth, 0 },
-				bl = tl + Vector2{ 0, this->boundary.halfheight },
-				br = bl + Vector2{ this->boundary.halfwidth, 0 };
+				tl{ (_boundary.center - Vector2{ w, h }), w, h },
+				tr = tl + Vector2{ _boundary.halfwidth, 0 },
+				bl = tl + Vector2{ 0, _boundary.halfheight },
+				br = bl + Vector2{ _boundary.halfwidth, 0 };
 
-			this->branches[0] = new QTree<T>(tl);
-			this->branches[1] = new QTree<T>(tr);
-			this->branches[2] = new QTree<T>(bl);
-			this->branches[3] = new QTree<T>(br);
+			_branches[0] = new QTree<T>(tl);
+			_branches[1] = new QTree<T>(tr);
+			_branches[2] = new QTree<T>(bl);
+			_branches[3] = new QTree<T>(br);
 		}
 
 	private:
-		BoundingBox boundary;
-		std::vector<T> elements;
-		QTree<T> *branches[4];
+		BoundingBox _boundary;
+		std::vector<T> _elements;
+		QTree<T> *_branches[4];
 	};
 
 	typedef QTree<Point<float>> QuadTree;

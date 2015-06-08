@@ -17,6 +17,7 @@ namespace cookiejar
 		std::uint32_t index() const { return id & ENTITY_INDEX_MASK; }
 
 		static inline Entity create(std::uint8_t generation, std::uint32_t index) { return Entity{ generation << 24 | index }; }
+		static inline Entity none() { return Entity{ (std::uint32_t)-1 }; }
 
 		std::uint32_t id;
 	};

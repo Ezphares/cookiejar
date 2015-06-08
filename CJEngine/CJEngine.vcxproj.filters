@@ -22,6 +22,12 @@
     <Filter Include="Header Files\Component Model">
       <UniqueIdentifier>{85948575-5b17-40bf-9f2c-596b1dbd2ecb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Physics">
+      <UniqueIdentifier>{317ebcb1-2012-4cb7-a043-bf108df23fc0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Physics">
+      <UniqueIdentifier>{59abfdf4-fcb7-4cfe-86c4-e196607040e8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -35,6 +41,9 @@
     </ClCompile>
     <ClCompile Include="componentmodel\entityinterface.cpp">
       <Filter>Source Files\Component Model</Filter>
+    </ClCompile>
+    <ClCompile Include="physics\physicsmanager.cpp">
+      <Filter>Source Files\Physics</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -70,6 +79,12 @@
     </ClInclude>
     <ClInclude Include="componentmodel\entitymanager.h">
       <Filter>Header Files\Component Model</Filter>
+    </ClInclude>
+    <ClInclude Include="physics\physicsmanager.h">
+      <Filter>Header Files\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="collidercomponent.h">
+      <Filter>Header Files\Physics</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
