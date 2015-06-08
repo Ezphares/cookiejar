@@ -6,6 +6,9 @@
 
 namespace cookiejar
 {
+	/*
+	 * Axis-aligned bounding box.
+	 */
 	template <typename T>
 	struct AABB
 	{

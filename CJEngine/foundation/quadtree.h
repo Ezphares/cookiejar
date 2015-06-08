@@ -27,7 +27,9 @@ namespace cookiejar
 		return *object;
 	}
 
-
+	/*
+	 * Basic quadtree
+	 */
 	template <typename T>
 	class QTree
 	{

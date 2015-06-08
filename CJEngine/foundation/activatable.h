@@ -2,6 +2,10 @@
 
 namespace cookiejar
 {
+	/*
+	 * Inherit this to create a pseudo-singleton class.
+	 * Multiple instances of it can exist, but only one is active at a time.
+	 */
 	template <typename T>
 	class Activatable
 	{
