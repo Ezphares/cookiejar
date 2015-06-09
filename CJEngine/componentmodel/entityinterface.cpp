@@ -18,4 +18,10 @@ namespace cookiejar
 		component_attach(e, &trans);
 		return e;
 	}
+
+
+	Vector2 *entity_position(const Entity &entity)
+	{
+		return &component_get<Translation>(entity)->pos;
+	}
 }

@@ -59,4 +59,7 @@ namespace cookiejar
 		GLVertexArray *_vao_sprite;
 	};
 
+#ifdef USE_GL_RENDERER
+	typedef GLGraphicsController GraphicsController;
+#endif
 }

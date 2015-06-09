@@ -58,6 +58,15 @@
     <Filter Include="Header Files\World">
       <UniqueIdentifier>{727862a5-1840-4e29-9274-fb6d82aa219c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Testgame">
+      <UniqueIdentifier>{aae55c96-6eb4-49de-9447-ecaa13c1dc5f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Drawing">
+      <UniqueIdentifier>{a6c102f3-65f1-4757-92d5-3bba82a958bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Drawing">
+      <UniqueIdentifier>{58581926-3051-44b0-b389-ac603b88f869}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -106,7 +115,10 @@
       <Filter>Source Files\Window\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="world\game.cpp">
-      <Filter>Source Files\World</Filter>
+      <Filter>Source Files\Testgame</Filter>
+    </ClCompile>
+    <ClCompile Include="drawing\drawmanager.cpp">
+      <Filter>Source Files\Drawing</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -190,6 +202,24 @@
     </ClInclude>
     <ClInclude Include="world\game.h">
       <Filter>Header Files\World</Filter>
+    </ClInclude>
+    <ClInclude Include="foundation\functions.h">
+      <Filter>Header Files\Foundation</Filter>
+    </ClInclude>
+    <ClInclude Include="drawing\drawcomponent.h">
+      <Filter>Header Files\Drawing</Filter>
+    </ClInclude>
+    <ClInclude Include="drawing\spritedrawcomponent.h">
+      <Filter>Header Files\Drawing</Filter>
+    </ClInclude>
+    <ClInclude Include="drawing\drawinterface.h">
+      <Filter>Header Files\Drawing</Filter>
+    </ClInclude>
+    <ClInclude Include="drawing\drawinterface.cpp">
+      <Filter>Source Files\Drawing</Filter>
+    </ClInclude>
+    <ClInclude Include="drawing\drawmanager.h">
+      <Filter>Header Files\Drawing</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

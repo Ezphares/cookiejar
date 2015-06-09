@@ -1,6 +1,5 @@
 CC=g++
-CCFLAGS=-g -Wall -std=c++11 -I. -DUSE_GL_RENDERER -mwindows -c
-#TODO: -lmingw32 if problems arise
+CCFLAGS=-g -Wall -Werror -std=c++11 -I. -DUSE_GL_RENDERER -mwindows -c
 LDSTD=-lgcc -lmingw32
 LDIMAGE=-lpng -lz
 LDOGL=-lglew32 -lglfw3dll -lopengl32
@@ -14,7 +13,8 @@ io\\filereader.cpp \
 window\\glwindow.cpp \
 window\\input\\glinputcontroller.cpp \
 window\\graphics\\glbuffer.cpp window\\graphics\\glgraphicscontroller.cpp window\\graphics\\glshaderprogram.cpp window\\graphics\\gltexture.cpp window\\graphics\\glvertexarray.cpp window\\graphics\\sprite.cpp \
-world\\game.cpp
+world\\game.cpp \
+drawing\\drawinterface.cpp drawing\\drawmanager.cpp
 
 
 OBJ=$(SRC:.cpp=.o)

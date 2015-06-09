@@ -4,6 +4,7 @@
 #include "componentmodel\translationcomponent.h"
 #include "world\game.h"
 #include "window\graphics\sprite.h"
+#include "drawing\drawcomponent.h"
 
 #include <Windows.h>
 

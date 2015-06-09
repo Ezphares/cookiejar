@@ -9,4 +9,6 @@ namespace cookiejar
 
 	Entity entity_create(const Vector2 &translation);
 	bool entity_is_alive(const Entity &entity);
+
+	Vector2 *entity_position(const Entity &entity);
 }
