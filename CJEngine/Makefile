@@ -1,8 +1,8 @@
 CC=g++
-CCFLAGS=-g -Wall -Werror -std=c++11 -I. -DUSE_GL_RENDERER -mwindows -c
+CCFLAGS=-g -Wall -Werror -std=c++11 -I. -DUSE_GL_RENDERER -DGLEW_STATIC -mwindows -c
 LDSTD=-lgcc -lmingw32
 LDIMAGE=-lpng -lz
-LDOGL=-lglew32 -lglfw3dll -lopengl32
+LDOGL=-lglew32s -lglfw3dll -lopengl32
 LDFLAGS=$(LDSTD) $(LDIMAGE) $(LDOGL) #-mwindows TODO: Remove console
 RM=del
 
