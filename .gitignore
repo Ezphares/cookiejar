@@ -191,3 +191,5 @@ ModelManifest.xml
 # Own additions
 *.o
 *.exe
+*.dll
+

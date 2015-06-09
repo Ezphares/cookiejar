@@ -38,7 +38,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <NMakeBuildCommandLine>mingw32-make</NMakeBuildCommandLine>
     <NMakeOutput>CJEngine.exe</NMakeOutput>
-    <NMakePreprocessorDefinitions>WIN32;_DEBUG;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
+    <NMakePreprocessorDefinitions>USE_GL_RENDERER;WIN32;_DEBUG;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
     <NMakeReBuildCommandLine>mingw32-make rebuild all</NMakeReBuildCommandLine>
     <NMakeCleanCommandLine>mingw32-make clean</NMakeCleanCommandLine>
     <NMakeIncludeSearchPath>E:\cpp\include;$(ProjectDir)</NMakeIncludeSearchPath>
@@ -46,7 +46,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <NMakeBuildCommandLine>mingw32-make</NMakeBuildCommandLine>
     <NMakeOutput>CJEngine.exe</NMakeOutput>
-    <NMakePreprocessorDefinitions>WIN32;NDEBUG;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
+    <NMakePreprocessorDefinitions>USE_GL_RENDERER;WIN32;NDEBUG;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
     <NMakeReBuildCommandLine>mingw32-make rebuild all</NMakeReBuildCommandLine>
     <NMakeCleanCommandLine>mingw32-make clean</NMakeCleanCommandLine>
     <NMakeIncludeSearchPath>E:\cpp\include;$(ProjectDir)</NMakeIncludeSearchPath>
@@ -60,8 +60,18 @@
     <ClCompile Include="componentmodel\componentmanager.cpp" />
     <ClCompile Include="componentmodel\entitymanager.cpp" />
     <ClCompile Include="componentmodel\entityinterface.cpp" />
+    <ClCompile Include="io\filereader.cpp" />
+    <ClCompile Include="io\filewriter.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="physics\physicsmanager.cpp" />
+    <ClCompile Include="window\glwindow.cpp" />
+    <ClCompile Include="window\graphics\glbuffer.cpp" />
+    <ClCompile Include="window\graphics\glgraphicscontroller.cpp" />
+    <ClCompile Include="window\graphics\glshaderprogram.cpp" />
+    <ClCompile Include="window\graphics\gltexture.cpp" />
+    <ClCompile Include="window\graphics\glvertexarray.cpp" />
+    <ClCompile Include="window\graphics\sprite.cpp" />
+    <ClCompile Include="window\input\glinputcontroller.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Makefile" />
@@ -77,9 +87,21 @@
     <ClInclude Include="foundation\quadtree.h" />
     <ClInclude Include="foundation\vector.h" />
     <ClInclude Include="componentmodel\translationcomponent.h" />
+    <ClInclude Include="io\filereader.h" />
+    <ClInclude Include="io\filewriter.h" />
+    <ClInclude Include="io\log.h" />
     <ClInclude Include="physics\collidercomponent.h" />
     <ClInclude Include="physics\physicsmanager.h" />
     <ClInclude Include="foundation\activatable.h" />
+    <ClInclude Include="window\glwindow.h" />
+    <ClInclude Include="window\graphics\glbuffer.h" />
+    <ClInclude Include="window\graphics\glgraphicscontroller.h" />
+    <ClInclude Include="window\graphics\glshaderprogram.h" />
+    <ClInclude Include="window\graphics\gltexture.h" />
+    <ClInclude Include="window\graphics\glvertexarray.h" />
+    <ClInclude Include="window\graphics\sprite.h" />
+    <ClInclude Include="window\input\glinputcontroller.h" />
+    <ClInclude Include="window\windowsettings.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

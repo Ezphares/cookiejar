@@ -44,6 +44,26 @@ namespace cookiejar
 		return Point<T> {lhs.x / rhs, lhs.y / rhs};
 	}
 
+	// Memberwise multiplication and division
+	template <typename T>
+	inline Point<T> operator*(const Point<T> &lhs, const Point<T> &rhs)
+	{
+		return Point<T> {lhs.x * rhs.x, lhs.y * rhs.y};
+	}
+
+	template <typename T>
+	inline Point<T> operator/(const Point<T> &lhs, const Point<T> &rhs)
+	{
+		return Point<T> {lhs.x / rhs.x, lhs.y / rhs.y};
+	}
+
+	// Point cast
+	template <typename U, typename T>
+	inline Point<U> point_cast(Point<T> org)
+	{
+		return Point<U> {static_cast<U>(org.x), static_cast<U>(org.y) };
+	}
+
 	/*
 	 * Arithmetic assignment
 	 */

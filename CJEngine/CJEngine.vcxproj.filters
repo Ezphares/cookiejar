@@ -28,6 +28,30 @@
     <Filter Include="Source Files\Physics">
       <UniqueIdentifier>{59abfdf4-fcb7-4cfe-86c4-e196607040e8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Window">
+      <UniqueIdentifier>{cd88349d-b05a-44f2-86ee-dba4b804e03d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Window\Graphics">
+      <UniqueIdentifier>{33925dbb-ffba-4084-a070-113e32c40506}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\IO">
+      <UniqueIdentifier>{7777ca6a-45c3-4b67-8153-e84f1981b0a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Window\Input">
+      <UniqueIdentifier>{a483990f-aecb-41a0-806c-da42da98ed07}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\IO">
+      <UniqueIdentifier>{91e750b3-e408-4f6c-99ac-60ac133a70f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Window">
+      <UniqueIdentifier>{052277c1-570d-41a8-981b-3679ff6f63c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Window\Input">
+      <UniqueIdentifier>{1f96ebae-d13a-4723-be9e-12a0471b03be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Window\Graphics">
+      <UniqueIdentifier>{1b5ac41b-51d8-497e-a4d9-ce3121cd1732}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -44,6 +68,36 @@
     </ClCompile>
     <ClCompile Include="physics\physicsmanager.cpp">
       <Filter>Source Files\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="io\filereader.cpp">
+      <Filter>Source Files\IO</Filter>
+    </ClCompile>
+    <ClCompile Include="window\glwindow.cpp">
+      <Filter>Source Files\Window</Filter>
+    </ClCompile>
+    <ClCompile Include="window\input\glinputcontroller.cpp">
+      <Filter>Source Files\Window\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="window\graphics\glvertexarray.cpp">
+      <Filter>Source Files\Window\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="window\graphics\glbuffer.cpp">
+      <Filter>Source Files\Window\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="window\graphics\glgraphicscontroller.cpp">
+      <Filter>Source Files\Window\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="window\graphics\glshaderprogram.cpp">
+      <Filter>Source Files\Window\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="window\graphics\gltexture.cpp">
+      <Filter>Source Files\Window\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="io\filewriter.cpp">
+      <Filter>Source Files\IO</Filter>
+    </ClCompile>
+    <ClCompile Include="window\graphics\sprite.cpp">
+      <Filter>Source Files\Window\Graphics</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -88,6 +142,42 @@
     </ClInclude>
     <ClInclude Include="foundation\activatable.h">
       <Filter>Header Files\Foundation</Filter>
+    </ClInclude>
+    <ClInclude Include="window\windowsettings.h">
+      <Filter>Header Files\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="window\glwindow.h">
+      <Filter>Header Files\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="window\graphics\glvertexarray.h">
+      <Filter>Header Files\Window\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="window\graphics\glbuffer.h">
+      <Filter>Header Files\Window\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="window\graphics\glgraphicscontroller.h">
+      <Filter>Header Files\Window\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="window\graphics\glshaderprogram.h">
+      <Filter>Header Files\Window\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="window\graphics\gltexture.h">
+      <Filter>Header Files\Window\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="io\filereader.h">
+      <Filter>Header Files\IO</Filter>
+    </ClInclude>
+    <ClInclude Include="io\filewriter.h">
+      <Filter>Header Files\IO</Filter>
+    </ClInclude>
+    <ClInclude Include="io\log.h">
+      <Filter>Header Files\IO</Filter>
+    </ClInclude>
+    <ClInclude Include="window\graphics\sprite.h">
+      <Filter>Header Files\Window\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="window\input\glinputcontroller.h">
+      <Filter>Header Files\Window\Input</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
