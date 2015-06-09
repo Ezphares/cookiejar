@@ -1,13 +1,10 @@
 #include "componentmanager.h"
 
-#include "translationcomponent.h"
-
 #include <algorithm>
 
 namespace cookiejar
 {
 	ComponentManager::ComponentManager() :
-		_translations(),
 		_generic_components()
 	{
 	}
@@ -15,11 +12,6 @@ namespace cookiejar
 
 	ComponentManager::~ComponentManager()
 	{
-	}
-
-	std::vector<Translation> &ComponentManager::get_translations()
-	{
-		return _translations;
 	}
 
 	void ComponentManager::attach(const Entity &entity, Component *component)

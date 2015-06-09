@@ -152,9 +152,6 @@
     <ClInclude Include="componentmodel\componentmanager.h">
       <Filter>Header Files\Component Model</Filter>
     </ClInclude>
-    <ClInclude Include="componentmodel\translationcomponent.h">
-      <Filter>Header Files\Component Model</Filter>
-    </ClInclude>
     <ClInclude Include="componentmodel\entitymanager.h">
       <Filter>Header Files\Component Model</Filter>
     </ClInclude>
@@ -229,6 +226,9 @@
     </ClInclude>
     <ClInclude Include="interfaces.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="physics\translationcomponent.h">
+      <Filter>Header Files\Physics</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

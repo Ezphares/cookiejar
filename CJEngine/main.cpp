@@ -1,7 +1,6 @@
 #include <iostream>
 
 #include "foundation/quadtree.h"
-#include "componentmodel\translationcomponent.h"
 #include "world\game.h"
 #include "window\graphics\sprite.h"
 #include "drawing\spritedrawcomponent.h"
@@ -31,7 +30,7 @@ int CALLBACK WinMain(
 	Sprite spr(&tx, 1, 1, Point < int32_t > {32, 32}, Point < int32_t > {0, 0}, Point < int32_t > {0, 0});
 
 	Entity e = entity_create(Vector2{0, 0});
-	std::cout << entity_is_alive(e) << std::endl;
+	component_get<Translation>(e)->velocity = { 100, 0};
 
 	SpriteDraw sd(&spr);
 
@@ -39,12 +38,5 @@ int CALLBACK WinMain(
 
 	game.run();
 	
-	//Vector2 a{ 1, 2 };
-	//a += Vector2{ 1, 2 };
-
-	//BoundingBox bb{ Vector2{ 0, 0 }, 100.0, 100.0 };
-
-	//QuadTree q{ bb };
-	//std::cout << q.insert(a) << std::endl;
 	return 0;
 }

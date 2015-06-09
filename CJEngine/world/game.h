@@ -19,6 +19,9 @@ namespace cookiejar
 
 	public:
 		WindowSettings window_settings;
+
+	private:
+		std::uint64_t get_tick();
 	
 	private:
 		GLWindow _window;

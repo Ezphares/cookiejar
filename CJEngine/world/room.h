@@ -16,7 +16,7 @@ namespace cookiejar
 		~Room();
 
 	public:
-		void update();
+		void update(float delta);
 		void draw(float delta);
 		void activate_all();
 

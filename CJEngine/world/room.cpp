@@ -15,13 +15,13 @@ namespace cookiejar
 	{
 	}
 
-	void Room::update()
+	void Room::update(float delta)
 	{
 		this->activate_all();
 
 		// TODO: Behaviour creations
 		// TODO: Behaviour prestep
-		// TODO: Physics step
+		_physics_manager.update(delta);
 		// TODO: Behaviour poststep
 
 	}

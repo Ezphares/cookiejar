@@ -1,7 +1,7 @@
 #pragma once
 
 #include <componentmodel\componentinterface.h>
-#include <componentmodel\translationcomponent.h>
+#include "translationcomponent.h"
 #include <foundation\quadtree.h>
 
 #include <foundation\boundingbox.h>
@@ -40,26 +40,26 @@ namespace cookiejar
 	{
 		const Entity &e = collider->get_entity();
 		Translation *trans = component_get<Translation>(e);
-		return Vector2{ collider->offset.x + trans->pos.x, collider->offset.y + trans->pos.y };
+		return collider->offset + trans->position;
 	}
 
 
 	template <>
 	inline Collider *component_get<Collider>(const Entity &entity)
 	{
-		return PhysicsManager::active()->get_by_entity(entity);
+		return PhysicsManager::active()->get_collider(entity);
 	}
 
 	template <>
 	inline void component_attach_internal<Collider>(const Entity &entity, Collider *collider)
 	{
-		PhysicsManager::active()->attach(entity, collider);
+		PhysicsManager::active()->attach_collider(entity, collider);
 	}
 
 	template <>
 	inline void component_detach<Collider>(const Entity &entity, Collider *collider)
 	{
-		PhysicsManager::active()->detach(entity, collider);
+		PhysicsManager::active()->detach_collider(entity, collider);
 	}
 
 }

@@ -32,10 +32,8 @@ namespace cookiejar
 
 		void attach(const Entity &entity, Component *component);
 		void detach(const Entity &entity, Component *component);
-		std::vector<Translation> &get_translations();
 
 	private:
-		std::vector<Translation> _translations;
 		std::map<Entity, std::vector<Component *>> _generic_components;
 	};
 }

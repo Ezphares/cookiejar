@@ -93,7 +93,7 @@
     <ClInclude Include="foundation\boundingbox.h" />
     <ClInclude Include="foundation\quadtree.h" />
     <ClInclude Include="foundation\vector.h" />
-    <ClInclude Include="componentmodel\translationcomponent.h" />
+    <ClInclude Include="physics\translationcomponent.h" />
     <ClInclude Include="foundation\functions.h" />
     <ClInclude Include="drawing\spritedrawcomponent.h" />
     <ClInclude Include="interfaces.h" />

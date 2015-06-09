@@ -2,8 +2,8 @@
 
 #include "drawcomponent.h"
 
-#include <componentmodel\translationcomponent.h>
-#include <window\graphics\sprite.h>
+#include <physics/translationcomponent.h>
+#include <window/graphics/sprite.h>
 
 namespace cookiejar
 {
@@ -39,7 +39,7 @@ namespace cookiejar
 			cmp.frame = (cmp.frame + 1) % cmp.sprite->get_frames();
 		}
 
-		Vector2 pos = component_get<Translation>(self)->pos + cmp.offset;
+		Vector2 pos = component_get<Translation>(self)->position + cmp.offset;
 		draw_sprite(cmp.sprite, cmp.frame, pos);
 	}
 }
