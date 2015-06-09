@@ -52,6 +52,12 @@
     <Filter Include="Source Files\Window\Graphics">
       <UniqueIdentifier>{1b5ac41b-51d8-497e-a4d9-ce3121cd1732}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\World">
+      <UniqueIdentifier>{53d810a1-bdb4-4d6e-ae90-00bd9f3aea86}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\World">
+      <UniqueIdentifier>{727862a5-1840-4e29-9274-fb6d82aa219c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -98,6 +104,9 @@
     </ClCompile>
     <ClCompile Include="window\graphics\sprite.cpp">
       <Filter>Source Files\Window\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="world\game.cpp">
+      <Filter>Source Files\World</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -178,6 +187,9 @@
     </ClInclude>
     <ClInclude Include="window\input\glinputcontroller.h">
       <Filter>Header Files\Window\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="world\game.h">
+      <Filter>Header Files\World</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

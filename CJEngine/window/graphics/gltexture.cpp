@@ -136,6 +136,7 @@ namespace cookiejar
 		png_destroy_read_struct(&png, &png_info, &png_end);
 		delete[] idata;
 		delete[] rowpointers;
+		std::fclose(fp);
 	}
 
 	Point<int32_t> GLTexture::get_size() const

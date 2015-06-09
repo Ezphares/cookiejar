@@ -60,6 +60,7 @@
     <ClCompile Include="componentmodel\componentmanager.cpp" />
     <ClCompile Include="componentmodel\entitymanager.cpp" />
     <ClCompile Include="componentmodel\entityinterface.cpp" />
+    <ClCompile Include="world\game.cpp" />
     <ClCompile Include="io\filereader.cpp" />
     <ClCompile Include="io\filewriter.cpp" />
     <ClCompile Include="main.cpp" />
@@ -87,6 +88,7 @@
     <ClInclude Include="foundation\quadtree.h" />
     <ClInclude Include="foundation\vector.h" />
     <ClInclude Include="componentmodel\translationcomponent.h" />
+    <ClInclude Include="world\game.h" />
     <ClInclude Include="io\filereader.h" />
     <ClInclude Include="io\filewriter.h" />
     <ClInclude Include="io\log.h" />

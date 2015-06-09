@@ -2,33 +2,26 @@
 
 #include "foundation/quadtree.h"
 #include "componentmodel\translationcomponent.h"
-#include "window\glwindow.h"
-#include "window\graphics\glgraphicscontroller.h"
-#include <GLFW\glfw3.h>
+#include "world\game.h"
+#include "window\graphics\sprite.h"
+
+#include <Windows.h>
 
 using namespace cookiejar;
 
-int main(int argc, char *argv[])
+int CALLBACK WinMain(
+	HINSTANCE hInstance,
+	HINSTANCE hPrevInstance,
+	LPSTR     lpCmdLine,
+	int       nCmdShow)
 {
-	GLWindow window;
-	WindowSettings settings = {};
-	settings.resolution = { 800, 600 };
-	settings.caption = "Test";
-	settings.fullscreen = false;
+	Game game{};
+	game.window_settings.size = { 800, 600 };
+	game.window_settings.caption = "Test";
+	game.window_settings.fullscreen = false;
 
+	game.run();
 
-	try
-	{
-		window.initialize();
-		window.setup(settings);
-	}
-	catch (int i)
-	{
-		std::cout << i << std::endl;
-	}
-
-	while (true);
-	
 	//Vector2 a{ 1, 2 };
 	//a += Vector2{ 1, 2 };
 

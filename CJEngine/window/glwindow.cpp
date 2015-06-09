@@ -54,8 +54,6 @@ namespace cookiejar
 		
 		//glfwWindowHint(GLFW_RESIZABLE, 0);
 
-		std::cout << size.x << "x" << size.y << std::endl;
-
 		_window = glfwCreateWindow(size.x, size.y, settings.caption.c_str(), monitor, NULL);
 		if (!_window)
 		{
