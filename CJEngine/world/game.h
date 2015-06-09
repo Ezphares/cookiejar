@@ -1,6 +1,7 @@
 #pragma once
 
 #include <window/glwindow.h>
+#include "room.h"
 
 namespace cookiejar
 {
@@ -14,11 +15,14 @@ namespace cookiejar
 		void initialize();
 		void run();
 
+		Room *create_room(bool activate = true);
+
 	public:
 		WindowSettings window_settings;
 	
 	private:
 		GLWindow _window;
 		bool _initialized;
+		Room *_active_room;
 	};
 }

@@ -15,10 +15,8 @@ namespace cookiejar
 
 	class ComponentManager : public Activatable<ComponentManager>
 	{
-	private:
-		ComponentManager();
-
 	public:
+		ComponentManager();
 		~ComponentManager();
 
 		template <typename T>

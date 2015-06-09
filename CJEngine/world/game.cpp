@@ -11,7 +11,8 @@ namespace cookiejar
 	Game::Game() :
 		window_settings(),
 		_window(),
-		_initialized(false)
+		_initialized(false),
+		_active_room(NULL)
 	{
 	}
 
@@ -28,6 +29,7 @@ namespace cookiejar
 
 		_window.initialize();
 		this->apply_settings();
+		_initialized = true;
 	}
 
 	void Game::apply_settings()
@@ -41,12 +43,6 @@ namespace cookiejar
 			this->initialize();
 
 		auto *input = _window.get_input_controller();
-		auto *gfc = _window.get_graphics_controller();
-
-
-		// DEBUG;
-		Texture tx("spr.png");
-		tx.bind();
 
 		while (_window.is_running())
 		{
@@ -54,9 +50,28 @@ namespace cookiejar
 			input->retrieve_events();
 			input->clear_events();
 
-			gfc->draw_start();
-			gfc->draw_textured_rectangle({ 0, 0 }, { 32, 32 }, { 0, 0 }, { 1, 1 });
-			gfc->draw_end();
+			if (_active_room)
+			{
+				_active_room->draw(0.0);
+			}
+			else
+			{
+				auto *gfx = _window.get_graphics_controller();
+				gfx->draw_start();
+				gfx->draw_end();
+			}
 		}
+	}
+
+	Room *Game::create_room(bool activate)
+	{
+		_active_room = new Room(_window.get_graphics_controller(), BoundingBox{ Vector2{ 0, 0 }, 400, 300 });
+
+		if (activate)
+		{
+			_active_room->activate_all();
+		}
+
+		return _active_room;
 	}
 }

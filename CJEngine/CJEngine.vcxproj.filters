@@ -114,11 +114,14 @@
     <ClCompile Include="window\graphics\sprite.cpp">
       <Filter>Source Files\Window\Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="world\game.cpp">
-      <Filter>Source Files\Testgame</Filter>
-    </ClCompile>
     <ClCompile Include="drawing\drawmanager.cpp">
       <Filter>Source Files\Drawing</Filter>
+    </ClCompile>
+    <ClCompile Include="world\room.cpp">
+      <Filter>Source Files\World</Filter>
+    </ClCompile>
+    <ClCompile Include="world\game.cpp">
+      <Filter>Source Files\World</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -220,6 +223,12 @@
     </ClInclude>
     <ClInclude Include="drawing\drawmanager.h">
       <Filter>Header Files\Drawing</Filter>
+    </ClInclude>
+    <ClInclude Include="world\room.h">
+      <Filter>Header Files\World</Filter>
+    </ClInclude>
+    <ClInclude Include="interfaces.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

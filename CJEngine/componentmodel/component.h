@@ -1,11 +1,12 @@
 #pragma once
 
+#include "entity.h"
+
 #include <cstdint>
 
 namespace cookiejar
 {
 	typedef std::uint16_t ComponentType;
-	struct Entity;
 
 	class Component
 	{

@@ -4,6 +4,8 @@
 
 #include <foundation\vector.h>
 
+#include <iostream>
+
 namespace cookiejar
 {
 	class Translation : public Component
@@ -39,9 +41,10 @@ namespace cookiejar
 
 		std::vector<Translation> &list = ComponentManager::active()->get_translations();
 		auto index = entity.index();
-		while (list.size() < index)
+		while (list.size() <= index)
 		{
-			list.push_back(Translation());
+			Translation temp(Vector2{ 0, 0 });
+			list.push_back(temp);
 		}
 
 		list[index] = *translation;

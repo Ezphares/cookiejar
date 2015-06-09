@@ -6,7 +6,9 @@
 
 namespace cookiejar
 {
-	ComponentManager::ComponentManager()
+	ComponentManager::ComponentManager() :
+		_translations(),
+		_generic_components()
 	{
 	}
 

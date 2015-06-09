@@ -1,15 +1,17 @@
 #include "entitymanager.h"
 
+#include <iostream>
+
 namespace cookiejar
 {
-	EntityManager::EntityManager()
-	{
-	}
+	EntityManager::EntityManager() : 
+		_entities(),
+		_indices()
+	{}
 
 
 	EntityManager::~EntityManager()
-	{
-	}
+	{}
 
 	Entity EntityManager::create_entity()
 	{
@@ -23,7 +25,7 @@ namespace cookiejar
 		}
 		else
 		{
-			Entity entity = Entity::create(0, index);
+			entity = Entity::create(0, index);
 			_entities.push_back(entity);
 		}
 		return entity;

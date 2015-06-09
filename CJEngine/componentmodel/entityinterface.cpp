@@ -4,18 +4,17 @@
 
 namespace cookiejar
 {
-	static EntityManager *ACTIVE = NULL;
-
 	bool entity_is_alive(const Entity &entity)
 	{
-		return ACTIVE->is_alive(entity);
+		return EntityManager::active()->is_alive(entity);
 	}
 
 	Entity entity_create(const Vector2 &translation)
 	{
 		Translation trans = Translation(translation);
-		Entity e = ACTIVE->create_entity();
-		component_attach(e, &trans);
+		
+		Entity e = EntityManager::active()->create_entity();
+		component_attach<Translation>(e, &trans);
 		return e;
 	}
 

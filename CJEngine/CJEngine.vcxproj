@@ -61,6 +61,7 @@
     <ClCompile Include="componentmodel\entitymanager.cpp" />
     <ClCompile Include="componentmodel\entityinterface.cpp" />
     <ClCompile Include="drawing\drawmanager.cpp" />
+    <ClCompile Include="world\room.cpp" />
     <ClCompile Include="world\game.cpp" />
     <ClCompile Include="io\filereader.cpp" />
     <ClCompile Include="io\filewriter.cpp" />
@@ -95,6 +96,8 @@
     <ClInclude Include="componentmodel\translationcomponent.h" />
     <ClInclude Include="foundation\functions.h" />
     <ClInclude Include="drawing\spritedrawcomponent.h" />
+    <ClInclude Include="interfaces.h" />
+    <ClInclude Include="world\room.h" />
     <ClInclude Include="world\game.h" />
     <ClInclude Include="io\filereader.h" />
     <ClInclude Include="io\filewriter.h" />

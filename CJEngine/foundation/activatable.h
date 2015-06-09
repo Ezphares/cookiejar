@@ -14,9 +14,12 @@ namespace cookiejar
 	class Activatable
 	{
 	public:
+		inline Activatable(){}
+		virtual inline ~Activatable(){}
+
 		void activate()
 		{
-			Activatable<T>::ACTIVE = *this;
+			Activatable<T>::ACTIVE = dynamic_cast<T *>(this);
 		}
 
 		static T* active()
