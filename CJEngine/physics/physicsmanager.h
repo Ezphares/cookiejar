@@ -1,11 +1,14 @@
 #pragma once
 
+#include "physicsinterface.h"
+
 #include <componentmodel\entity.h>
 #include <foundation\quadtree.h>
 #include <componentmodel\componentinterface.h>
 #include <foundation\activatable.h>
 
 #include <map>
+#include <deque>
 
 namespace cookiejar
 {
@@ -15,6 +18,18 @@ namespace cookiejar
 
 	class PhysicsManager : public Activatable<PhysicsManager>
 	{
+		struct CollisionResult
+		{
+			CollisionEvent first, second;
+		};
+
+		struct CollisionPart
+		{
+			Entity entity;
+			Collider *collider;
+			BoundingBox derived;
+		};
+
 	public:
 		PhysicsManager(const BoundingBox &area);
 		virtual ~PhysicsManager();
@@ -28,11 +43,21 @@ namespace cookiejar
 		Collider *get_collider(const Entity &entity);
 
 		void update(float delta);
+		CollisionEvent physics_step(Collider *collider);
 
 	private:
+		void collide_all();
+		CollisionResult resolve_collision(CollisionPart first, CollisionPart second);
+
+	private:
+		std::deque<Collider *> _collider_all;
+
 		QTree<Collider *> _collider_tree;
-		std::map<Entity, std::vector<Collider>> _collider_map;
+		std::vector<Collider *> _collider_oob;
+
 		std::vector<Translation *> _translations;
+
+		float _range;
 	};
 
 }

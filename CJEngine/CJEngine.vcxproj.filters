@@ -230,6 +230,9 @@
     <ClInclude Include="physics\translationcomponent.h">
       <Filter>Header Files\Physics</Filter>
     </ClInclude>
+    <ClInclude Include="physics\physicsinterface.h">
+      <Filter>Header Files\Physics</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="README.md" />

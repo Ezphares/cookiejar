@@ -9,7 +9,7 @@ RM=del
 SRC=main.cpp \
 componentmodel\\entitymanager.cpp componentmodel\\componentmanager.cpp componentmodel\\entityinterface.cpp \
 physics\\physicsmanager.cpp \
-io\\filereader.cpp \
+io\\filereader.cpp io\\filewriter.cpp \
 window\\glwindow.cpp \
 window\\input\\glinputcontroller.cpp \
 window\\graphics\\glbuffer.cpp window\\graphics\\glgraphicscontroller.cpp window\\graphics\\glshaderprogram.cpp window\\graphics\\gltexture.cpp window\\graphics\\glvertexarray.cpp window\\graphics\\sprite.cpp \

@@ -6,8 +6,11 @@
 namespace cookiejar
 {
 	PhysicsManager::PhysicsManager(const BoundingBox &area) :
+		_collider_all(),
 		_collider_tree(area),
-		_translations()
+		_collider_oob(),
+		_translations(),
+		_range(0.0)
 	{
 	}
 
@@ -16,6 +19,11 @@ namespace cookiejar
 		for (Translation *t : _translations)
 		{
 			delete t;
+		}
+
+		for (Collider *c : _collider_all)
+		{
+			delete c;
 		}
 	}
 
@@ -38,9 +46,105 @@ namespace cookiejar
 
 	void PhysicsManager::update(float delta)
 	{
+		// Update positions
 		for (Translation *t : _translations)
 		{
 			t->position += (t->velocity * delta);
 		}
+
+		// Make sure tree contains correct elements
+		std::vector<Collider *> out = _collider_tree.update();
+
+		auto in = _collider_oob.begin();
+		while (in != _collider_oob.end())
+		{
+			Collider *c = (*in);
+			if (_collider_tree.insert(c))
+			{
+				in = _collider_oob.erase(in);
+			}
+			else
+			{
+				in++;
+			}
+		}
+
+		_collider_oob.reserve(_collider_oob.size() + out.size());
+		_collider_oob.insert(_collider_oob.end(), out.begin(), out.end());
+
+		// Collisions
+		this->collide_all();
+	}
+
+	void PhysicsManager::collide_all()
+	{
+		std::map<Entity, std::vector<TriggerType>> triggers{};
+		std::map<Entity, CollisionEvent> collisions{};
+
+		std::vector<std::deque<Collider *>::iterator> to_detach{};
+
+		for (auto it = _collider_all.begin(); it != _collider_all.end(); it++)
+		{
+			Entity entity_first = (*it)->get_entity();
+
+			// Do not collide dead entities
+			if (!entity_is_alive(entity_first))
+			{
+				to_detach.push_back(it);
+				continue;
+			}
+
+			BoundingBox box_first = (*it)->boundary + *entity_position(entity_first);
+			BoundingBox search{ box_first.center, _range, _range };
+
+			auto potential = _collider_tree.query_area(search);
+			for (auto *other : potential)
+			{
+				Entity entity_second = other->get_entity();
+
+				if (entity_first != entity_second && !entity_is_alive(entity_second))
+				{
+					continue;
+				}
+
+				BoundingBox box_second = other->boundary + *entity_position(entity_second);
+				if (box_first.intersects(box_second))
+				{
+					if (other->trigger)
+					{
+						triggers[entity_first].push_back(other->trigger);
+					}
+
+					if ((*it)->layers & other->layers)
+					{
+						auto results = this->resolve_collision({ entity_first, (*it), box_first },
+															   { entity_second, other, box_second });
+
+						collisions[entity_first] |= results.first;
+						collisions[entity_second] |= results.second;
+					}
+				}
+			}
+		}
+		// TODO: Fire events
+	}
+
+	PhysicsManager::CollisionResult PhysicsManager::resolve_collision(CollisionPart first, CollisionPart second)
+	{
+		PhysicsManager::CollisionResult result{ 0, 0 };
+
+		bool push_first = first.collider->blocked && second.collider->solid;
+		bool push_second = first.collider->solid && second.collider->blocked;
+
+		if (!(push_first || push_second)) // No interaction, we're done.
+		{
+			return result;
+		}
+
+		// TODO: Resolve platforms
+
+		// TODO: Push entities
+
+		return result;
 	}
 }

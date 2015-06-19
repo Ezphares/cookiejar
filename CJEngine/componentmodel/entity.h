@@ -31,4 +31,9 @@ namespace cookiejar
 	{
 		return left.id == right.id;
 	}
+
+	inline bool operator!= (const Entity &left, const Entity &right)
+	{
+		return !(left == right);
+	}
 }

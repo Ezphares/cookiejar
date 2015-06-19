@@ -10,16 +10,16 @@
 
 namespace cookiejar
 {
+
 	class Collider : public Component
 	{
 		typedef std::uint32_t LayerMask;
 		enum Platform {NO, UP, DOWN, LEFT, RIGHT};
 
 	public:
-		inline Collider(const BoundingBox &boundary = BoundingBox(), const Vector2 &offset = Vector2(), const LayerMask &layers = 1,
-						const bool &solid = false, const bool &blocked = false, const bool &trigger = false, const Platform &platform = NO) :
+		inline Collider(const BoundingBox &boundary = BoundingBox(), const LayerMask &layers = 1,
+						const bool &solid = false, const bool &blocked = false, const TriggerType &trigger = NOT_TRIGGER, const Platform &platform = NO) :
 			boundary(boundary),
-			offset(offset),
 			layers(layers),
 			solid(solid),
 			blocked(blocked),
@@ -29,9 +29,9 @@ namespace cookiejar
 
 	public:
 		BoundingBox boundary;
-		Vector2 offset;
 		LayerMask layers;
-		bool solid, blocked, trigger;
+		bool solid, blocked;
+		TriggerType trigger;
 		Platform platform;
 	};
 
@@ -40,7 +40,7 @@ namespace cookiejar
 	{
 		const Entity &e = collider->get_entity();
 		Translation *trans = component_get<Translation>(e);
-		return collider->offset + trans->position;
+		return collider->boundary.center + trans->position;
 	}
 
 
