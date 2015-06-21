@@ -6,6 +6,7 @@
 #include <window/graphics/glgraphicscontroller.h>
 #include <window/graphics/sprite.h>
 
+#include <list>
 #include <vector>
 
 namespace cookiejar
@@ -29,6 +30,6 @@ namespace cookiejar
 
 	private:
 		GraphicsController *_controller;
-		std::vector<Draw *> _components;
+		std::list<Draw *> _components;
 	};
 }

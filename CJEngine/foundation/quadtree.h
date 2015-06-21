@@ -6,6 +6,8 @@
 #include <cstdint>
 #include <vector>
 
+#include <iostream>
+
 namespace cookiejar
 {
 	template <typename T>
@@ -34,7 +36,7 @@ namespace cookiejar
 	class QTree
 	{
 	private:
-		typedef std::integral_constant<std::uint16_t, 4> CAPACITY;
+		typedef std::integral_constant<std::size_t, 4> CAPACITY;
 
 	public:
 		inline QTree(const BoundingBox &boundary) :
@@ -179,6 +181,7 @@ namespace cookiejar
 			if (_elements.size() < QTree<T>::CAPACITY::value)
 			{
 				_elements.push_back(element);
+				return true;
 			}
 
 			// Do we need to subdivide?
@@ -186,6 +189,7 @@ namespace cookiejar
 			{
 				this->subdivide();
 			}
+
 
 			// Attempt insertion in branches!
 			for (std::size_t i = 0; i < 4; ++i)

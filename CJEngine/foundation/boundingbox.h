@@ -29,6 +29,14 @@ namespace cookiejar
 		}
 	};
 
+	template<typename T>
+	inline AABB<T> Rect(const Point<T> &top_left, const Point<T> &bottom_right)
+	{
+		T	hw = (bottom_right.x - top_left.x) / 2,
+			hh = (bottom_right.y - top_left.y) / 2;
+		return AABB <T> {Vector2{ top_left.x + hw, top_left.y + hh }, std::abs(hw), std::abs(hh)};
+	}
+
 	/*
 	 * Arithmetic operators
 	 */

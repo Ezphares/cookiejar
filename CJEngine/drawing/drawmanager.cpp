@@ -24,7 +24,7 @@ namespace cookiejar
 	{
 		sprite->get_texture()->bind();
 		_controller->draw_textured_rectangle(
-			position,
+			position - point_cast<float>(sprite->get_draw_offset()),
 			sprite->get_framesize(),
 			sprite->get_offset(frame),
 			sprite->get_size());
@@ -59,7 +59,7 @@ namespace cookiejar
 
 	void DrawManager::draw_all(float delta)
 	{
-		std::sort(_components.begin(), _components.end(), depth_compare);
+		_components.sort(depth_compare);
 
 		_controller->draw_start();
 
