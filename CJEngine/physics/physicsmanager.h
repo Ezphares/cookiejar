@@ -8,7 +8,7 @@
 #include <foundation\activatable.h>
 
 #include <map>
-#include <deque>
+#include <list>
 
 namespace cookiejar
 {
@@ -48,12 +48,14 @@ namespace cookiejar
 	private:
 		void collide_all();
 		CollisionResult resolve_collision(CollisionPart first, CollisionPart second);
+		CollisionEvent push_vertical(CollisionPart pushed, CollisionPart pusher);
+		CollisionEvent push_horizontal(CollisionPart pushed, CollisionPart pusher);
 
 	private:
-		std::deque<Collider *> _collider_all;
+		std::list<Collider *> _collider_all;
 
 		QTree<Collider *> _collider_tree;
-		std::vector<Collider *> _collider_oob;
+		std::list<Collider *> _collider_oob;
 
 		std::vector<Translation *> _translations;
 

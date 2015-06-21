@@ -3,6 +3,10 @@
 #include "collidercomponent.h"
 #include "translationcomponent.h"
 
+#include <foundation/algorithm.h>
+
+#include <cmath>
+
 namespace cookiejar
 {
 	PhysicsManager::PhysicsManager(const BoundingBox &area) :
@@ -44,11 +48,27 @@ namespace cookiejar
 		_translations[index] = translation;
 	}
 
+	void PhysicsManager::attach_collider(const Entity &entity, Collider *collider)
+	{
+		_collider_all.push_back(collider);
+
+		float new_range = std::max(collider->boundary.halfheight, collider->boundary.halfwidth) * 2;
+		_range = std::max(_range, new_range);
+		if (!_collider_tree.insert(collider))
+		{
+			_collider_oob.push_back(collider);
+		}
+
+		std::cout << "COLLIDE ALL" << std::endl;
+
+	}
+
 	void PhysicsManager::update(float delta)
 	{
 		// Update positions
 		for (Translation *t : _translations)
 		{
+			t->position_previous = t->position;
 			t->position += (t->velocity * delta);
 		}
 
@@ -69,7 +89,6 @@ namespace cookiejar
 			}
 		}
 
-		_collider_oob.reserve(_collider_oob.size() + out.size());
 		_collider_oob.insert(_collider_oob.end(), out.begin(), out.end());
 
 		// Collisions
@@ -78,10 +97,8 @@ namespace cookiejar
 
 	void PhysicsManager::collide_all()
 	{
-		std::map<Entity, std::vector<TriggerType>> triggers{};
+		std::map<Entity, std::vector<TriggerEvent>> triggers{};
 		std::map<Entity, CollisionEvent> collisions{};
-
-		std::vector<std::deque<Collider *>::iterator> to_detach{};
 
 		for (auto it = _collider_all.begin(); it != _collider_all.end(); it++)
 		{
@@ -90,7 +107,8 @@ namespace cookiejar
 			// Do not collide dead entities
 			if (!entity_is_alive(entity_first))
 			{
-				to_detach.push_back(it);
+				it = _collider_all.erase(it);
+				it--;
 				continue;
 			}
 
@@ -112,7 +130,7 @@ namespace cookiejar
 				{
 					if (other->trigger)
 					{
-						triggers[entity_first].push_back(other->trigger);
+						triggers[entity_first].push_back({ other->trigger, entity_second });
 					}
 
 					if ((*it)->layers & other->layers)
@@ -126,6 +144,8 @@ namespace cookiejar
 				}
 			}
 		}
+
+		
 		// TODO: Fire events
 	}
 
@@ -143,7 +163,46 @@ namespace cookiejar
 
 		// TODO: Resolve platforms
 
-		// TODO: Push entities
+		Vector2 layout = (second.derived.center - first.derived.center);
+		// Offset is the necessary distance to push either entity to move it out of the other.
+		Vector2 offset{ (first.derived.halfwidth + second.derived.halfwidth - std::abs(second.derived.center.x - first.derived.center.x)) * sign(layout.x),
+						(first.derived.halfheight + second.derived.halfheight - std::abs(second.derived.center.y - first.derived.center.y)) * sign(layout.y)};
+		if (push_first && push_second)
+		{
+			offset = offset / 2.0f;
+		}
+
+		if (std::abs(offset.x) <= std::abs(offset.y))
+		{
+			// Horizontal push
+			if (push_first)
+			{
+				get_translation(first.entity)->position.x -= offset.x;
+				// TODO: Add event
+			}
+
+			if (push_second)
+			{
+				get_translation(second.entity)->position.x += offset.x;
+				// TODO: Add event
+			}
+		}
+		else
+		{
+			// Vertical push
+			if (push_first)
+			{
+				get_translation(first.entity)->position.y -= offset.y;
+				// TODO: Add event
+			}
+
+			if (push_second)
+			{
+				get_translation(second.entity)->position.y += offset.y;
+				// TODO: Add event
+			}
+		}
+
 
 		return result;
 	}

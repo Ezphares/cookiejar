@@ -2,6 +2,8 @@
 
 #include <cstdint>
 
+#include <componentmodel/entity.h>
+
 namespace cookiejar
 {
 	typedef std::uint32_t CollisionEvent;
@@ -14,4 +16,9 @@ namespace cookiejar
 
 	typedef std::uint32_t TriggerType;
 	const static TriggerType NOT_TRIGGER = 0;
+	struct TriggerEvent
+	{
+		TriggerType type;
+		Entity entity;
+	};
 }
