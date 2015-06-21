@@ -100,7 +100,7 @@ namespace cookiejar
 
 	Room *Game::create_room(bool activate)
 	{
-		_active_room = new Room(_window.get_graphics_controller(), BoundingBox{ Vector2{ 0, 0 }, 400, 300 });
+		_active_room = new Room(_window.get_graphics_controller(), BoundingBox{ Vector2{ 0, 0 }, 5000, 5000 });
 
 		if (activate)
 		{

@@ -80,6 +80,7 @@
     <None Include="Makefile" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="foundation\algorithm.h" />
     <ClInclude Include="componentmodel\component.h" />
     <ClInclude Include="componentmodel\componentmanager.h" />
     <ClInclude Include="componentmodel\componentinterface.h" />

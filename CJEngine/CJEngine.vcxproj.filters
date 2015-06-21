@@ -233,6 +233,9 @@
     <ClInclude Include="physics\physicsinterface.h">
       <Filter>Header Files\Physics</Filter>
     </ClInclude>
+    <ClInclude Include="foundation\algorithm.h">
+      <Filter>Header Files\Foundation</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="README.md" />
