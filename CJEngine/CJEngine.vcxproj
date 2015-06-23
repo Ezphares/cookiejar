@@ -57,10 +57,12 @@
     <Text Include="README.md" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="behaviour\behaviourmanager.cpp" />
     <ClCompile Include="componentmodel\componentmanager.cpp" />
     <ClCompile Include="componentmodel\entitymanager.cpp" />
     <ClCompile Include="componentmodel\entityinterface.cpp" />
     <ClCompile Include="drawing\drawmanager.cpp" />
+    <ClCompile Include="physics\physicsinterface.cpp" />
     <ClCompile Include="world\room.cpp" />
     <ClCompile Include="world\game.cpp" />
     <ClCompile Include="io\filereader.cpp" />
@@ -80,6 +82,8 @@
     <None Include="Makefile" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="behaviour\behaviourmanager.h" />
+    <ClInclude Include="behaviour\behaviourcomponent.h" />
     <ClInclude Include="foundation\algorithm.h" />
     <ClInclude Include="componentmodel\component.h" />
     <ClInclude Include="componentmodel\componentmanager.h" />

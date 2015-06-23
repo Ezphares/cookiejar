@@ -2,6 +2,8 @@
 
 #include <memory>
 
+#define CJ_BEHAVIOUR_SCRIPT(name) void name(const Entity &self, Component *component, void *arg)
+
 namespace cookiejar
 {
 	struct Entity;
@@ -13,6 +15,8 @@ namespace cookiejar
 	{
 		return std::shared_ptr<void>(NULL, nop_delete);
 	}
-}
 
-#define CJ_BEHAVIOUR_SCRIPT(name) void name(const Entity &self, Component *component, void *arg)
+	inline CJ_BEHAVIOUR_SCRIPT(nop)
+	{
+	}
+}

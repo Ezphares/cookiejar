@@ -39,25 +39,33 @@ namespace cookiejar
 	inline Vector2 get_qtree_vector<Collider *>(Collider * const &collider)
 	{
 		const Entity &e = collider->get_entity();
-		Translation *trans = component_get<Translation>(e);
+		auto trans = component_get<Translation>(e);
+		return collider->boundary.center + trans->position;
+	}
+
+	template <>
+	inline Vector2 get_qtree_vector<std::shared_ptr<Collider>>(std::shared_ptr<Collider> const &collider)
+	{
+		const Entity &e = collider->get_entity();
+		auto trans = component_get<Translation>(e);
 		return collider->boundary.center + trans->position;
 	}
 
 
 	template <>
-	inline Collider *component_get<Collider>(const Entity &entity)
+	inline std::vector<std::shared_ptr<Collider>> component_get_internal<Collider>(const Entity &entity)
 	{
-		return PhysicsManager::active()->get_collider(entity);
+		return PhysicsManager::active()->get_colliders(entity);
 	}
 
 	template <>
-	inline void component_attach_internal<Collider>(const Entity &entity, Collider *collider)
+	inline void component_attach_internal<Collider>(const Entity &entity, std::shared_ptr<Collider> collider)
 	{
 		PhysicsManager::active()->attach_collider(entity, collider);
 	}
 
 	template <>
-	inline void component_detach<Collider>(const Entity &entity, Collider *collider)
+	inline void component_detach_internal<Collider>(const Entity &entity, std::shared_ptr<Collider> collider)
 	{
 		PhysicsManager::active()->detach_collider(entity, collider);
 	}

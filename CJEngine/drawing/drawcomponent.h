@@ -22,25 +22,25 @@ namespace cookiejar
 	};
 
 
-	inline bool depth_compare(Draw *a, Draw *b)
+	inline bool depth_compare(std::shared_ptr<Draw> a, std::shared_ptr<Draw> b)
 	{
 		return b->depth < a->depth;
 	}
 
 	template <>
-	inline std::vector<Draw *> component_get_internal<Draw>(const Entity &entity)
+	inline std::vector<std::shared_ptr<Draw>> component_get_internal<Draw>(const Entity &entity)
 	{
 		return DrawManager::active()->get_by_entity(entity);
 	}
 
 	template <>
-	inline void component_attach_internal<Draw>(const Entity &entity, Draw *component)
+	inline void component_attach_internal<Draw>(const Entity &entity, std::shared_ptr<Draw> component)
 	{
 		DrawManager::active()->attach(entity, component);
 	}
 
 	template <>
-	inline void component_detach_internal<Draw>(const Entity &entity, Draw *component)
+	inline void component_detach_internal<Draw>(const Entity &entity, std::shared_ptr<Draw> component)
 	{
 		DrawManager::active()->detach(entity, component);
 	}

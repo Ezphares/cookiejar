@@ -60,14 +60,14 @@ namespace cookiejar
 				steps -= 1000 / physics_rate;
 				if (_active_room)
 				{
-					float physics_delta = 1.0 / static_cast<float>(physics_rate);
+					double physics_delta = 1.0 / static_cast<double>(physics_rate);
 					_active_room->update(physics_delta);
 				}
 			}
 
 			if (_active_room)
 			{
-				float spf = static_cast<float>(ticks) / 1000.0;
+				double spf = static_cast<double>(ticks) / 1000.0;
 				_active_room->draw(spf);
 			}
 			else
@@ -100,7 +100,7 @@ namespace cookiejar
 
 	Room *Game::create_room(bool activate)
 	{
-		_active_room = new Room(_window.get_graphics_controller(), BoundingBox{ Vector2{ 0, 0 }, 5000, 5000 });
+		_active_room = new Room(_window.get_graphics_controller(), _window.get_input_controller(), BoundingBox{ Vector2{ 0, 0 }, 5000, 5000 });
 
 		if (activate)
 		{

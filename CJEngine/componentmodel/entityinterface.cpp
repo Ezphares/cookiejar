@@ -11,7 +11,7 @@ namespace cookiejar
 
 	Entity entity_create(const Vector2 &translation)
 	{
-		Translation *trans = new Translation(translation);
+		auto trans = std::shared_ptr<Translation>(new Translation(translation));
 		
 		Entity e = EntityManager::active()->create_entity();
 		component_attach<Translation>(e, trans);

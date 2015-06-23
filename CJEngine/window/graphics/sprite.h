@@ -15,9 +15,9 @@ namespace cookiejar
 		virtual ~Sprite();
 
 	public:
-		Point<float> get_size() const;
-		Point<float> get_offset(int frame) const;
-		Point<float> get_framesize() const;
+		Vector2 get_size() const;
+		Vector2 get_offset(int frame) const;
+		Vector2 get_framesize() const;
 		Point<int32_t> get_draw_offset() const;
 		Texture *get_texture() const;
 		int get_frames() const;
@@ -25,9 +25,9 @@ namespace cookiejar
 	private:
 		Texture *_texture;
 		int _frames;
-		Point<float> _texsize;
-		Point<float> _framesize;
-		Point<float> *_frame_texoffsets;
+		Vector2 _texsize;
+		Vector2 _framesize;
+		Vector2 *_frame_texoffsets;
 		Point<int32_t> _draw_offset;
 	};
 }

@@ -35,15 +35,17 @@ namespace cookiejar
 		virtual ~PhysicsManager();
 
 	public:
-		void attach_translation(const Entity &entity, Translation *translation);
-		Translation *get_translation(const Entity &entity);
+		void attach_translation(const Entity &entity, std::shared_ptr<Translation> translation);
+		std::shared_ptr<Translation> get_translation(const Entity &entity);
 
-		void attach_collider(const Entity &entity, Collider *collider);
-		void detach_collider(const Entity &entity, Collider *collider);
-		Collider *get_collider(const Entity &entity);
+		void attach_collider(const Entity &entity, std::shared_ptr<Collider> collider);
+		void detach_collider(const Entity &entity, std::shared_ptr<Collider> collider);
+		std::vector<std::shared_ptr<Collider>> get_colliders(const Entity &entity);
 
-		void update(float delta);
+		void update(BasePrecision delta);
 		CollisionEvent physics_step(Collider *collider);
+
+		bool is_free(const Entity &entity, Vector2 position, bool only_solid);
 
 	private:
 		void collide_all();
@@ -52,12 +54,12 @@ namespace cookiejar
 		CollisionEvent push_horizontal(CollisionPart pushed, CollisionPart pusher);
 
 	private:
-		std::list<Collider *> _collider_all;
+		std::list<std::shared_ptr<Collider>> _collider_all;
 
-		QTree<Collider *> _collider_tree;
-		std::list<Collider *> _collider_oob;
+		QTree<std::shared_ptr<Collider>> _collider_tree;
+		std::list<std::shared_ptr<Collider>> _collider_oob;
 
-		std::vector<Translation *> _translations;
+		std::vector<std::shared_ptr<Translation>> _translations;
 
 		float _range;
 	};

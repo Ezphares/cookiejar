@@ -1,8 +1,10 @@
 #pragma once
 
-#include <cstdint>
+#include <foundation/vector.h>
 
 #include <componentmodel/entity.h>
+
+#include <cstdint>
 
 namespace cookiejar
 {
@@ -21,4 +23,6 @@ namespace cookiejar
 		TriggerType type;
 		Entity entity;
 	};
+
+	bool place_free(const Entity &entity, Vector2 position);
 }

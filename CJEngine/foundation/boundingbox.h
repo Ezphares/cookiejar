@@ -70,5 +70,5 @@ namespace cookiejar
 	}
 
 
-	typedef AABB<float> BoundingBox;
+	typedef AABB<BasePrecision> BoundingBox;
 }

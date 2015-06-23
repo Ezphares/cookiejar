@@ -24,18 +24,18 @@ namespace cookiejar
 	{
 		sprite->get_texture()->bind();
 		_controller->draw_textured_rectangle(
-			position - point_cast<float>(sprite->get_draw_offset()),
+			position - point_cast<BasePrecision>(sprite->get_draw_offset()),
 			sprite->get_framesize(),
 			sprite->get_offset(frame),
 			sprite->get_size());
 	}
 
-	void DrawManager::attach(const Entity &entity, Draw *component)
+	void DrawManager::attach(const Entity &entity, std::shared_ptr<Draw> component)
 	{
 		_components.push_back(component);
 	}
 
-	void DrawManager::detach(const Entity &entity, Draw *component)
+	void DrawManager::detach(const Entity &entity, std::shared_ptr<Draw> component)
 	{
 		auto it = std::find(_components.begin(), _components.end(), component);
 		if (it != _components.end())
@@ -44,9 +44,9 @@ namespace cookiejar
 		}
 	}
 
-	std::vector<Draw *> DrawManager::get_by_entity(const Entity &entity)
+	std::vector<std::shared_ptr<Draw>> DrawManager::get_by_entity(const Entity &entity)
 	{
-		std::vector<Draw *> result;
+		std::vector<std::shared_ptr<Draw>> result;
 		for (auto draw : _components)
 		{
 			if (draw->get_entity() == entity)
@@ -57,7 +57,7 @@ namespace cookiejar
 		return result;
 	}
 
-	void DrawManager::draw_all(float delta)
+	void DrawManager::draw_all(BasePrecision delta)
 	{
 		_components.sort(depth_compare);
 
@@ -66,7 +66,7 @@ namespace cookiejar
 		auto it = _components.begin();
 		while (it != _components.end())
 		{
-			Draw *draw = (*it);
+			Draw *draw = (*it).get();
 			Entity ent = draw->get_entity();
 			if (!entity_is_alive(ent))
 			{

@@ -12,7 +12,7 @@ namespace cookiejar
 	class SpriteDraw : public Draw
 	{
 	public:
-		inline SpriteDraw(Sprite *sprite, const Vector2 &offset = { 0, 0 }, const int &depth = 0, const float &fps = 30) : Draw(sprite_draw_behaviour, depth),
+		inline SpriteDraw(Sprite *sprite, const Vector2 &offset = { 0, 0 }, const int &depth = 0, const BasePrecision &fps = 30) : Draw(sprite_draw_behaviour, depth),
 			sprite(sprite),
 			offset(offset),
 			fps(fps),
@@ -22,7 +22,7 @@ namespace cookiejar
 
 		Sprite *sprite;
 		Vector2 offset;
-		float fps, accumulator;
+		BasePrecision fps, accumulator;
 		int frame;
 	};
 

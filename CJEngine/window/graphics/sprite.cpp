@@ -8,34 +8,34 @@ namespace cookiejar
 		_draw_offset(draw_offset)
 	{
 		auto texi = texture->get_size();
-		Point<float> texf = point_cast<float>(texi);
+		Vector2 texf = point_cast<BasePrecision>(texi);
 
-		_framesize = point_cast<float>(frame_size);
+		_framesize = point_cast<BasePrecision>(frame_size);
 		// Size of a frame in texture coordinates
 		_texsize = _framesize / texf;
 
-		Point<float> frameoffset = point_cast<float>(frame_offset);
-		_frame_texoffsets = new Point<float>[frames];
+		Vector2 frameoffset = point_cast<BasePrecision>(frame_offset);
+		_frame_texoffsets = new Point<BasePrecision>[frames];
 		for (int32_t i = 0; i < frames; i++)
 		{
 			float x = (float)(i % frames_per_row);
 			float y = (float)(i / frames_per_row);
 
-			_frame_texoffsets[i] = Point<float>{frameoffset.x + _texsize.x * x, frameoffset.y + _texsize.y * y};
+			_frame_texoffsets[i] = Vector2{ frameoffset.x + _texsize.x * x, frameoffset.y + _texsize.y * y };
 		}
 	}
 
-	Point<float> Sprite::get_size() const
+	Vector2 Sprite::get_size() const
 	{
 		return _texsize;
 	}
 
-	Point<float> Sprite::get_framesize() const
+	Vector2 Sprite::get_framesize() const
 	{
 		return _framesize;
 	}
 
-	Point<float> Sprite::get_offset(int frame) const
+	Vector2 Sprite::get_offset(int frame) const
 	{
 		return _frame_texoffsets[frame % _frames];
 	}

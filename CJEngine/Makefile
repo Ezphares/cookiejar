@@ -8,13 +8,14 @@ RM=del
 
 SRC=main.cpp \
 componentmodel\\entitymanager.cpp componentmodel\\componentmanager.cpp componentmodel\\entityinterface.cpp \
-physics\\physicsmanager.cpp \
+physics\\physicsmanager.cpp physics\\physicsinterface.cpp \
 io\\filereader.cpp io\\filewriter.cpp \
 window\\glwindow.cpp \
 window\\input\\glinputcontroller.cpp \
 window\\graphics\\glbuffer.cpp window\\graphics\\glgraphicscontroller.cpp window\\graphics\\glshaderprogram.cpp window\\graphics\\gltexture.cpp window\\graphics\\glvertexarray.cpp window\\graphics\\sprite.cpp \
 world\\game.cpp world\\room.cpp \
-drawing\\drawinterface.cpp drawing\\drawmanager.cpp
+drawing\\drawinterface.cpp drawing\\drawmanager.cpp \
+behaviour\\behaviourmanager.cpp
 
 
 OBJ=$(SRC:.cpp=.o)

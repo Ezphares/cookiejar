@@ -14,12 +14,12 @@ namespace cookiejar
 	{
 	}
 
-	void ComponentManager::attach(const Entity &entity, Component *component)
+	void ComponentManager::attach(const Entity &entity, std::shared_ptr<Component> component)
 	{
 		_generic_components[entity].push_back(component);
 	}
 
-	void ComponentManager::detach(const Entity &entity, Component *component)
+	void ComponentManager::detach(const Entity &entity, std::shared_ptr<Component> component)
 	{
 		auto &list = _generic_components[entity];
 

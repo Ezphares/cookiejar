@@ -130,7 +130,14 @@ namespace cookiejar
 			throw 1; //TODO: GraphicsException
 		}
 
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, w, h, 0, GL_RGBA, GL_UNSIGNED_BYTE, (GLvoid*)idata);
+		GLint format = GL_RGBA;
+		if (png_get_channels(png, png_info) == 3)
+		{
+			format = GL_RGB;
+		}
+
+
+		glTexImage2D(GL_TEXTURE_2D, 0, format, w, h, 0, format, GL_UNSIGNED_BYTE, (GLvoid*)idata);
 		process_texture();
 
 		png_destroy_read_struct(&png, &png_info, &png_end);

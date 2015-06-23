@@ -20,65 +20,105 @@ namespace cookiejar
 
 	PhysicsManager::~PhysicsManager()
 	{
-		for (Translation *t : _translations)
-		{
-			delete t;
-		}
-
-		for (Collider *c : _collider_all)
-		{
-			delete c;
-		}
 	}
 
-	Translation *PhysicsManager::get_translation(const Entity &entity)
+	std::shared_ptr<Translation> PhysicsManager::get_translation(const Entity &entity)
 	{
 		return _translations[entity.index()];
 	}
 
-	void PhysicsManager::attach_translation(const Entity &entity, Translation *translation)
+	void PhysicsManager::attach_translation(const Entity &entity, std::shared_ptr<Translation> translation)
 	{
 		auto index = entity.index();
 		while (_translations.size() <= index)
 		{
-			_translations.push_back(NULL);
+			_translations.push_back(std::shared_ptr<Translation>(NULL));
 		}
 
-		delete _translations[index];
 		_translations[index] = translation;
 	}
 
-	void PhysicsManager::attach_collider(const Entity &entity, Collider *collider)
+	void PhysicsManager::attach_collider(const Entity &entity, std::shared_ptr<Collider> collider)
 	{
 		_collider_all.push_back(collider);
 
-		float new_range = std::max(collider->boundary.halfheight, collider->boundary.halfwidth) * 2;
+		float new_range = std::max(collider->boundary.halfheight, collider->boundary.halfwidth) * 4;
 		_range = std::max(_range, new_range);
 		if (!_collider_tree.insert(collider))
 		{
 			_collider_oob.push_back(collider);
 		}
-
-		std::cout << "COLLIDE ALL" << std::endl;
-
 	}
 
-	void PhysicsManager::update(float delta)
+	std::vector<std::shared_ptr<Collider>> PhysicsManager::get_colliders(const Entity &entity)
+	{
+		std::vector<std::shared_ptr<Collider>> result{};
+
+		for (auto c : _collider_all)
+		{
+			if (c->get_entity() == entity)
+			{
+				result.push_back(c);
+			}
+		}
+
+		return result;
+	}
+
+	bool PhysicsManager::is_free(const Entity &entity, Vector2 position, bool only_solid)
+	{
+		if (!entity_is_alive(entity))
+		{
+			return false;
+		}
+
+		auto colliders = get_colliders(entity);
+		for (auto collider : colliders)
+		{
+			BoundingBox box_first = collider->boundary + position;
+			BoundingBox search{ box_first.center, _range, _range };
+			auto potential = _collider_tree.query_area(search);
+			for (auto other : potential)
+			{
+				Entity entity_other = other->get_entity();
+
+				if (entity == entity_other ||				// Do not collide with self
+					!entity_is_alive(entity_other) ||		// Do not collide with dead entities
+					!(collider->layers & other->layers) ||	// Only collide overlapping layers
+					(only_solid && !other->solid))			// Filter solid according to argument
+				{
+					continue;
+				}
+
+				Vector2 pos_second = component_get<Translation>(entity_other)->position;
+				BoundingBox box_second = other->boundary + pos_second;
+
+				if (box_first.intersects(box_second))
+				{
+					return false;
+				}
+			}
+		}
+
+		return true;
+	}
+
+	void PhysicsManager::update(BasePrecision delta)
 	{
 		// Update positions
-		for (Translation *t : _translations)
+		for (std::shared_ptr<Translation> t : _translations)
 		{
 			t->position_previous = t->position;
 			t->position += (t->velocity * delta);
 		}
 
 		// Make sure tree contains correct elements
-		std::vector<Collider *> out = _collider_tree.update();
+		std::vector<std::shared_ptr<Collider>> out = _collider_tree.update();
 
 		auto in = _collider_oob.begin();
 		while (in != _collider_oob.end())
 		{
-			Collider *c = (*in);
+			std::shared_ptr<Collider> c = (*in);
 			if (_collider_tree.insert(c))
 			{
 				in = _collider_oob.erase(in);
@@ -116,7 +156,7 @@ namespace cookiejar
 			BoundingBox search{ box_first.center, _range, _range };
 
 			auto potential = _collider_tree.query_area(search);
-			for (auto *other : potential)
+			for (std::shared_ptr<Collider> other : potential)
 			{
 				Entity entity_second = other->get_entity();
 
@@ -135,11 +175,13 @@ namespace cookiejar
 
 					if ((*it)->layers & other->layers)
 					{
-						auto results = this->resolve_collision({ entity_first, (*it), box_first },
-															   { entity_second, other, box_second });
+						auto results = this->resolve_collision({ entity_first, (*it).get(), box_first },
+															   { entity_second, other.get(), box_second });
 
 						collisions[entity_first] |= results.first;
 						collisions[entity_second] |= results.second;
+
+						box_first = (*it)->boundary + *entity_position(entity_first);
 					}
 				}
 			}

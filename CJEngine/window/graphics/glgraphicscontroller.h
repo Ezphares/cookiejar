@@ -26,7 +26,7 @@ namespace cookiejar
 		void draw_start();
 		void draw_end();
 
-		void draw_textured_rectangle(Point<float> offset, Point<float> size, Point<float> texoffset, Point<float> texsize);
+		void draw_textured_rectangle(Vector2 offset, Vector2 size, Vector2 texoffset, Vector2 texsize);
 
 	private:
 		void create_buffers();

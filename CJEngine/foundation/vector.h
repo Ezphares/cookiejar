@@ -107,5 +107,6 @@ namespace cookiejar
 		return stream;
 	}
 
-	typedef Point<float> Vector2;
+	typedef float BasePrecision;
+	typedef Point<BasePrecision> Vector2;
 }

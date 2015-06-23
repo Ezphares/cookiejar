@@ -65,13 +65,13 @@ namespace cookiejar
 		}
 	}
 
-	void GLGraphicsController::draw_textured_rectangle(Point<float> offset, Point<float> size, Point<float> texoffset, Point<float> texsize)
+	void GLGraphicsController::draw_textured_rectangle(Vector2 offset, Vector2 size, Vector2 texoffset, Vector2 texsize)
 	{
 		// TODO: Call glUseProgram here? May need that for primitives later.
-		glUniform2f(_uniform_sprite.offset, offset.x, offset.y);
-		glUniform2f(_uniform_sprite.size, size.x, size.y);
-		glUniform2f(_uniform_sprite.texoffset, texoffset.x, texoffset.y);
-		glUniform2f(_uniform_sprite.texsize, texsize.x, texsize.y);
+		glUniform2f(_uniform_sprite.offset, (float)offset.x, (float)offset.y);
+		glUniform2f(_uniform_sprite.size, (float)size.x, (float)size.y);
+		glUniform2f(_uniform_sprite.texoffset, (float)texoffset.x, (float)texoffset.y);
+		glUniform2f(_uniform_sprite.texsize, (float)texsize.x, (float)texsize.y);
 
 		glDrawArrays(GL_TRIANGLES, 0, 6);
 	}

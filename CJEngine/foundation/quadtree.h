@@ -247,5 +247,5 @@ namespace cookiejar
 		QTree<T> *_branches[4];
 	};
 
-	typedef QTree<Point<float>> QuadTree;
+	typedef QTree<Vector2> QuadTree;
 }

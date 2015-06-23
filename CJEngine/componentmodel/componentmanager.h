@@ -8,6 +8,7 @@
 
 #include <vector>
 #include <map>
+#include <memory>
 
 namespace cookiejar
 {
@@ -20,7 +21,7 @@ namespace cookiejar
 		~ComponentManager();
 
 		template <typename T>
-		inline std::vector<Component *> get_components(const Entity &entity)
+		inline std::vector<std::shared_ptr<Component>> get_components(const Entity &entity)
 		{
 			/*if (!EntityManager::is_alive())
 			{
@@ -30,10 +31,10 @@ namespace cookiejar
 		}
 
 
-		void attach(const Entity &entity, Component *component);
-		void detach(const Entity &entity, Component *component);
+		void attach(const Entity &entity, std::shared_ptr<Component>);
+		void detach(const Entity &entity, std::shared_ptr<Component>);
 
 	private:
-		std::map<Entity, std::vector<Component *>> _generic_components;
+		std::map<Entity, std::vector<std::shared_ptr<Component>>> _generic_components;
 	};
 }

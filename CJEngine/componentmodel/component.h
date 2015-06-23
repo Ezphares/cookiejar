@@ -29,4 +29,5 @@ namespace cookiejar
 	protected:
 		Entity _entity;
 	};
+
 }

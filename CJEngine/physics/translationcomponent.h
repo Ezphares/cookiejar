@@ -26,9 +26,9 @@ namespace cookiejar
 
 
 	template <>
-	inline std::vector<Translation *> component_get_internal<Translation>(const Entity &entity)
+	inline std::vector<std::shared_ptr<Translation>> component_get_internal<Translation>(const Entity &entity)
 	{
-		std::vector<Translation *> result{};
+		std::vector<std::shared_ptr<Translation>> result{};
 		if (entity_is_alive(entity))
 		{
 			result.push_back(PhysicsManager::active()->get_translation(entity));
@@ -37,7 +37,7 @@ namespace cookiejar
 	}
 
 	template <>
-	inline void component_attach_internal<Translation>(const Entity &entity, Translation *translation)
+	inline void component_attach_internal<Translation>(const Entity &entity, std::shared_ptr<Translation> translation)
 	{
 		if (!entity_is_alive(entity)) // TODO Assert instead?
 			return;
@@ -46,7 +46,7 @@ namespace cookiejar
 	}
 
 	template <>
-	inline void component_detach_internal<Translation>(const Entity &entity, Translation *translation)
+	inline void component_detach_internal<Translation>(const Entity &entity, std::shared_ptr<Translation> translation)
 	{
 		return; // Never detach translations
 	}

@@ -67,6 +67,12 @@
     <Filter Include="Source Files\Drawing">
       <UniqueIdentifier>{58581926-3051-44b0-b389-ac603b88f869}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Behaviour">
+      <UniqueIdentifier>{677d7ca6-ed11-4461-a5c6-ad336c2893f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Behaviour">
+      <UniqueIdentifier>{c577f811-f86c-42b2-b767-3771191ee6f2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -122,6 +128,12 @@
     </ClCompile>
     <ClCompile Include="world\game.cpp">
       <Filter>Source Files\World</Filter>
+    </ClCompile>
+    <ClCompile Include="behaviour\behaviourmanager.cpp">
+      <Filter>Source Files\Behaviour</Filter>
+    </ClCompile>
+    <ClCompile Include="physics\physicsinterface.cpp">
+      <Filter>Source Files\Physics</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -235,6 +247,12 @@
     </ClInclude>
     <ClInclude Include="foundation\algorithm.h">
       <Filter>Header Files\Foundation</Filter>
+    </ClInclude>
+    <ClInclude Include="behaviour\behaviourcomponent.h">
+      <Filter>Header Files\Behaviour</Filter>
+    </ClInclude>
+    <ClInclude Include="behaviour\behaviourmanager.h">
+      <Filter>Header Files\Behaviour</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
